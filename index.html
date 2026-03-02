@@ -85,7 +85,7 @@
     </div>
 
     <div class="inline" style="margin-top:12px;">
-      <span class="pill" id="levelPill">Lv1 着床者</span>
+      <span class="pill" id="levelPill">Lv1 Upside Down👽</span>
       <span class="pill gray" id="xpPill">XP 0</span>
       <span class="pill gray" id="streakPill">不断线 0 天</span>
       <button class="secondary" id="adviceBtn">抽一条随机医嘱</button>
@@ -101,28 +101,28 @@
   </section>
 
   <div class="tabs">
-    <button class="tab-btn active" data-tab="overview">孕程总览</button>
-    <button class="tab-btn" data-tab="daily">今日记录</button>
-    <button class="tab-btn" data-tab="weekly">周复盘</button>
-    <button class="tab-btn" data-tab="months">十个月计划</button>
-    <button class="tab-btn" data-tab="history">记录历史</button>
+    <button class="tab-btn active" data-tab="overview">Journey</button>
+    <button class="tab-btn" data-tab="daily">Today</button>
+    <button class="tab-btn" data-tab="weekly">This Week</button>
+    <button class="tab-btn" data-tab="months">Season 1</button>
+    <button class="tab-btn" data-tab="history">Record</button>
   </div>
 
   <!-- OVERVIEW -->
   <section id="tab-overview" class="tab-panel">
     <div class="grid grid-2">
       <div class="card">
-        <h2>当前阶段总览</h2>
+        <h2>Journey Overview</h2>
         <div class="inline" style="margin-bottom:8px;">
-          <span class="pill" id="currentMonthPill">第1个月｜着床期</span>
-          <span class="pill gray" id="currentWeekPill">第1周</span>
-          <span class="pill gray" id="dayCountPill">第1天</span>
+          <span class="pill" id="currentMonthPill">Episode 1｜Upside Down👽</span>
+          <span class="pill gray" id="currentWeekPill">WEEK 1</span>
+          <span class="pill gray" id="dayCountPill">DAY 1</span>
         </div>
         <p class="muted small" id="currentThemeText"></p>
 
         <div class="divider"></div>
 
-        <h3>Weekly Deliverable（本周主线任务）</h3>
+        <h3>Weekly Deliverable</h3>
         <div class="entry">
           <div class="entry-header">
             <span id="weeklyDeliverableTitle">未设置</span>
@@ -159,7 +159,7 @@
       </div>
 
       <div class="card">
-        <h2>最近7天产检数据</h2>
+        <h2>Record in the past 7 days</h2>
         <div class="grid grid-3" style="margin-top: 8px;">
           <div class="kpi"><div class="value" id="kpiResearch">0h</div><div class="label">科研深度工作</div></div>
           <div class="kpi"><div class="value" id="kpiExercise">0次</div><div class="label">运动天数</div></div>
@@ -191,7 +191,7 @@
 
         <div class="divider"></div>
 
-        <h3>Boss Raid（论文副本）</h3>
+        <h3>Boss Raid</h3>
         <div id="bossRaidBox" class="table-like"></div>
 
         <div class="divider"></div>
@@ -286,7 +286,7 @@
         <div class="table-like" id="fakeEffortList"></div>
 
         <div class="row" style="grid-template-columns: 1fr;">
-          <label for="dailyNote">今日胎动（备注）</label>
+          <label for="dailyNote">Today's Note</label>
           <textarea id="dailyNote" placeholder="今天最明显的进步 / 被劫持原因 / 一个真实观察"></textarea>
         </div>
 
@@ -298,7 +298,7 @@
       </div>
 
       <div class="card">
-        <h2>今日产检提示</h2>
+        <h2>今日检测</h2>
         <div id="dailyHints" class="table-like"></div>
 
         <div class="divider"></div>
@@ -313,7 +313,7 @@
 
         <div class="divider"></div>
 
-        <h3>今日Boss战提示</h3>
+        <h3>今日Boss提示</h3>
         <div id="dailyBossBox" class="entry small muted">填完数据后，这里会识别你今天在打哪只怪。</div>
 
         <div class="divider"></div>
@@ -333,8 +333,8 @@
   <section id="tab-weekly" class="tab-panel hidden">
     <div class="grid grid-2">
       <div class="card">
-        <h2>周复盘｜产检门诊</h2>
-        <p class="muted small">每周只改三件事，别贪多。系统升级靠微调，不靠暴力。</p>
+        <h2>周复盘</h2>
+        <p class="muted small">每周只改三件事，别贪多。系统升级靠微调，别逼自己。</p>
 
         <div class="row">
           <label for="weeklyDate">复盘日期</label>
@@ -384,8 +384,8 @@
   <!-- MONTHS -->
   <section id="tab-months" class="tab-panel hidden">
     <div class="card">
-      <h2>十个月发育计划</h2>
-      <p class="muted small">每个月都有发育重点、监测指标、达成标准。不要用一天的状态审判整个孕程。</p>
+      <h2>'Nurture My New Self' Season 1</h2>
+      <p class="muted small">Welcome to 'Nurture My New Self' Season 1</p>
 
       <div id="monthsContainer" class="table-like" style="margin-top:12px;"></div>
     </div>
@@ -519,7 +519,7 @@
   ];
 
   function levelTitle(level){
-    const titles=["着床者","胚芽构建者","系统成形者","稳定供养者","胎动感知者","结构强化者","带压运行者","定力成形者","临产整合者","新生体"];
+    const titles=["Upside Down 👽","Will The Wise 🤓","011 The Winner🥳","001 Vecna 😈","Papa 🫡","Mad Max 🫨","Mind Flayer 🤖","The Heroic🦸‍♀️","The Sorcerer 🧙","Rightside UP 👍"];
     if(level<=0) return titles[0];
     if(level>=10) return titles[9];
     return titles[level-1];
@@ -655,16 +655,16 @@
 
   // Minimal month plan list (keep small)
   const monthPlans = [
-    {month:1,stage:"着床期",motto:"先着床，不流产。",theme:"新身份先着床，不追求爆发，只追求长期目标不再永远排最后。",warnings:["不要一上来排满日程","不要靠情绪决定做不做","先保最低标准，再谈上限"]},
-    {month:2,stage:"胚芽期",motto:"先长骨架，不拼颜值。",theme:"从我想改变，进入我每天有动作，建立执行骨架。",warnings:["警惕假努力冒充进展","计划时间封顶15分钟","关键任务先开始再完美"]},
-    {month:3,stage:"器官形成期",motto:"系统先稳，速度后面会来。",theme:"执行系统开始成形，时间系统、任务系统、恢复系统都开始发育。",warnings:["状态好也别加码过猛","不要把运动当惩罚","崩盘日回到最低标准"]},
-    {month:4,stage:"稳定孕期",motto:"不是更狠，是更稳。",theme:"从求生模式转向建设模式，能量管理开始见效。",warnings:["别因为觉得自己好了就猛冲","别用熬夜换效率","保留恢复行为"]},
-    {month:5,stage:"胎动期",motto:"有胎动了，继续养，不乱折腾。",theme:"开始明显感到自己在变，焦虑来了也不完全劫持你。",warnings:["有进步也别停记录","一两天失控不是退步","别看不起最低标准"]},
-    {month:6,stage:"结构强化期",motto:"专业不是忙，是有取舍。",theme:"专业感从感觉变成行为，优先级、边界、交付质量开始成形。",warnings:["警惕全能幻想","不属于你的责任别自动接住","边界训练会不舒服但很值"]},
-    {month:7,stage:"负重练习期",motto:"压力存在，也能推进。",theme:"在压力真实存在时仍运转，不再等状态好才开始。",warnings:["旧系统会抢控制权正常","不要因为回潮就否定自己","收到，但先做25分钟"]},
-    {month:8,stage:"定力成形期",motto:"定力不是硬扛，是顺序稳定。",theme:"你开始像你想成为的人，越来越不容易被消息和情绪带跑。",warnings:["别因为进步就增加太多目标","定力来自重复，不来自灵感"]},
-    {month:9,stage:"临产准备期",motto:"先整合，再冲刺。",theme:"把行为整合成身份感，开始看见自己已不是偶尔做到。",warnings:["临近年底易自我审判","不要只盯没做到的","开始做证据清单"]},
-    {month:10,stage:"分娩期",motto:"平稳分娩，不靠蛮力。",theme:"把新自己顺利生出来，身份落地。",warnings:["节奏比强度更重要","别搞最后一个月逆天改命","用稳定收尾"]},
+    {month:1,stage:"Upside Down 👽",motto:"三月辛卯",theme:"舍离碎银几两，奔赴锦绣印章。",warnings:["人生主线是学习","多向前辈请教","不要卷入他人的感情纠纷"]},
+    {month:2,stage:"Will The Wise 🤓",motto:"四月壬辰。",theme:"借杀化印证乾坤，避水潜龙越龙门。",warnings:["警惕假努力冒充进展","禁止任何与人对线","多喝温水，吃清淡热食。"]},
+    {month:3,stage:"011 The Winner🥳",motto:"五月癸巳。",theme:"亦敌亦友磨锋刃，利禄归心火更燃。",warnings:["莫与镜像争虚名","适当的压力等于动力","给我往死里卷"]},
+    {month:4,stage:"001 Vecna 😈",motto:"六月甲午。",theme:"双午重逢火欲燃，莫随流俗争长短。",warnings:["注意明面上的竞争者","别用熬夜换效率","遇事强制冷却 10 分钟"]},
+    {month:5,stage:"Papa 🫡",motto:"七月乙未",theme:"正印滋身才气溢，谨言慎行守灵犀。",warnings:["有进步也别停记录","莫炫耀，防人借此生事","私人敏感话题严禁外传"]},
+    {month:6,stage:"Mad Max 🫨",motto:"八月丙申",theme:"比肩坐财利纠纷，冷眼观心定乾坤。",warnings:["警惕全能幻想","不属于你的责任别自动接","边界训练会不舒服但很值"]},
+    {month:7,stage:"Mind Flayer 🤖",motto:"九月丁酉",theme:"钱财露白，必招贼人。",warnings:["财不外露","不要因为回潮就否定自己","适当放松"]},
+    {month:8,stage:"The Heroic🦸‍♀️",motto:"十月戊戌",theme:"奇思妙想入简书，食神坐库结硕果。",warnings:["旧识即贵人","拥抱变化"]},
+    {month:9,stage:"The Sorcerer 🧙",motto:"十一月己亥",theme:"才气驾凌压力顶，封侯拜将在此间。",warnings:["防妒，忌言谈出挑引蜂蝶","别崩溃","坚持，你是Sorcerer"]},
+    {month:10,stage:"Rightside UP 👍",motto:"十二月庚子",theme:"偏财庚金利路开，正官子水引印来。",warnings:["节奏比强度更重要","别搞最后一个月逆天改命","用稳定收尾"]},
   ];
 
   // Utils
