@@ -6,240 +6,72 @@
   <title>十月怀胎计划｜孕育新的自己</title>
   <style>
     :root {
-      --bg: #f7f7fb;
-      --card: #ffffff;
-      --text: #1f2430;
-      --muted: #6b7280;
-      --line: #e5e7eb;
-      --accent: #7c3aed;
-      --accent-soft: #ede9fe;
-      --good: #16a34a;
-      --warn: #d97706;
-      --bad: #dc2626;
-      --shadow: 0 8px 24px rgba(17, 24, 39, 0.06);
-      --radius: 16px;
+      --bg:#f7f7fb; --card:#fff; --text:#1f2430; --muted:#6b7280; --line:#e5e7eb;
+      --accent:#7c3aed; --accent-soft:#ede9fe; --good:#16a34a; --warn:#d97706; --bad:#dc2626;
+      --shadow:0 8px 24px rgba(17,24,39,.06); --radius:16px;
     }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
-        "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
-    .hero {
-      background: linear-gradient(135deg, #faf5ff 0%, #eef2ff 100%);
-      border: 1px solid #ede9fe;
-      border-radius: 20px;
-      padding: 22px;
-      box-shadow: var(--shadow);
-      margin-bottom: 16px;
-    }
-    .hero h1 { margin: 0 0 8px; font-size: 26px; line-height: 1.2; }
-    .hero p { margin: 0; color: var(--muted); }
-    .identity {
-      margin-top: 14px;
-      background: rgba(255,255,255,0.8);
-      border: 1px dashed #c4b5fd;
-      border-radius: 14px;
-      padding: 12px;
-      font-weight: 600;
-    }
-    .tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0; }
-    .tab-btn {
-      border: 1px solid var(--line);
-      background: #fff;
-      color: var(--text);
-      border-radius: 999px;
-      padding: 10px 14px;
-      cursor: pointer;
-      font-weight: 600;
-    }
-    .tab-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-
-    .grid { display: grid; gap: 16px; }
-    .grid-2 { grid-template-columns: 1.1fr 0.9fr; }
-    .grid-3 { grid-template-columns: repeat(3, 1fr); }
-    @media (max-width: 900px) {
-      .grid-2, .grid-3 { grid-template-columns: 1fr; }
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 16px;
-    }
-    .card h2, .card h3 { margin: 0 0 10px; line-height: 1.2; }
-    .card h2 { font-size: 20px; }
-    .card h3 { font-size: 16px; }
-
-    .muted { color: var(--muted); }
-    .small { font-size: 13px; }
-
-    .row {
-      display: grid;
-      grid-template-columns: 1fr 140px;
-      gap: 10px;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .row label { font-size: 14px; font-weight: 600; }
-
-    input[type="number"], input[type="date"], textarea, select {
-      width: 100%;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      padding: 10px 12px;
-      font: inherit;
-      background: #fff;
-    }
-    textarea { min-height: 90px; resize: vertical; }
-
-    .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
-
-    button {
-      border: 0;
-      border-radius: 10px;
-      padding: 10px 14px;
-      cursor: pointer;
-      font-weight: 700;
-      font: inherit;
-    }
-    .primary { background: var(--accent); color: white; }
-    .secondary { background: #fff; color: var(--text); border: 1px solid var(--line); }
-    .danger { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: #5b21b6;
-      font-weight: 800;
-      font-size: 13px;
-      margin-right: 8px;
-      margin-bottom: 8px;
-      border: 1px solid #ddd6fe;
-    }
-    .pill.gray { background: #f3f4f6; color: #374151; border-color: #e5e7eb; }
-    .pill.good { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
-    .pill.warn { background: #ffedd5; color: #9a3412; border-color: #fed7aa; }
-    .pill.bad { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
-
-    .kpi {
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 12px;
-      background: #fff;
-    }
-    .kpi .value { font-size: 24px; font-weight: 900; line-height: 1.1; }
-    .kpi .label { color: var(--muted); font-size: 13px; margin-top: 4px; }
-
-    .progress-wrap { margin-top: 8px; }
-    .progress-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-      margin-bottom: 6px;
-      color: var(--muted);
-    }
-    .progress {
-      height: 10px;
-      border-radius: 999px;
-      background: #eef2f7;
-      overflow: hidden;
-    }
-    .progress > span {
-      display: block;
-      height: 100%;
-      background: linear-gradient(90deg, #8b5cf6 0%, #6366f1 100%);
-      width: 0%;
-      transition: width 0.3s ease;
-    }
-
-    .month-list { display: grid; gap: 12px; }
-    .month-item {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 14px;
-      background: #fff;
-    }
-    .month-item.active { border-color: #c4b5fd; background: #faf5ff; }
-    .month-title { font-weight: 900; margin-bottom: 6px; }
-
-    ul { margin: 8px 0 0 18px; padding: 0; }
-    .table-like { display: grid; gap: 8px; }
-
-    .entry {
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 10px;
-      background: #fff;
-      font-size: 13px;
-    }
-    .entry-header {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 6px;
-      font-weight: 900;
-    }
-
-    .status-good { color: var(--good); }
-    .status-warn { color: var(--warn); }
-    .status-bad { color: var(--bad); }
-
-    .hidden { display: none; }
-    .footer-note { margin-top: 18px; color: var(--muted); font-size: 13px; text-align: center; }
-    .inline { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-    .checkbox-line { display: flex; align-items: center; gap: 8px; margin-top: 6px; font-size: 14px; }
-    .divider { height: 1px; background: var(--line); margin: 12px 0; }
-
-    .badge-grid { display: flex; gap: 8px; flex-wrap: wrap; }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: #fff;
-      font-weight: 800;
-      font-size: 13px;
-      color: #111827;
-    }
-    .badge.locked { opacity: 0.45; }
-    .badge.unlocked { border-color: #c4b5fd; background: #faf5ff; }
-    .boss-card {
-      border: 1px solid #fecaca;
-      background: #fff1f2;
-      border-radius: 14px;
-      padding: 12px;
-    }
-    .boss-title {
-      font-weight: 900;
-      color: #9f1239;
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      align-items: center;
-      margin-bottom: 6px;
-    }
-    .boss-skill {
-      background: #fff;
-      border: 1px dashed #fda4af;
-      padding: 10px;
-      border-radius: 12px;
-      font-size: 13px;
-      color: #4b5563;
-    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    .container{max-width:1100px;margin:0 auto;padding:20px}
+    .hero{background:linear-gradient(135deg,#faf5ff 0%,#eef2ff 100%);border:1px solid #ede9fe;border-radius:20px;padding:22px;box-shadow:var(--shadow);margin-bottom:16px}
+    .hero h1{margin:0 0 8px;font-size:26px;line-height:1.2}
+    .hero p{margin:0;color:var(--muted)}
+    .identity{margin-top:14px;background:rgba(255,255,255,.8);border:1px dashed #c4b5fd;border-radius:14px;padding:12px;font-weight:600}
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+    .tab-btn{border:1px solid var(--line);background:#fff;color:var(--text);border-radius:999px;padding:10px 14px;cursor:pointer;font-weight:600}
+    .tab-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+    .grid{display:grid;gap:16px}
+    .grid-2{grid-template-columns:1.1fr .9fr}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    @media (max-width:900px){.grid-2,.grid-3{grid-template-columns:1fr}}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px}
+    .card h2,.card h3{margin:0 0 10px;line-height:1.2}
+    .card h2{font-size:20px}.card h3{font-size:16px}
+    .muted{color:var(--muted)} .small{font-size:13px}
+    .row{display:grid;grid-template-columns:1fr 170px;gap:10px;align-items:center;margin-bottom:10px}
+    .row label{font-size:14px;font-weight:600}
+    input[type="number"],input[type="date"],textarea,select,input[type="text"]{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit;background:#fff}
+    textarea{min-height:90px;resize:vertical}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    button{border:0;border-radius:10px;padding:10px 14px;cursor:pointer;font-weight:800;font:inherit}
+    .primary{background:var(--accent);color:#fff}
+    .secondary{background:#fff;color:var(--text);border:1px solid var(--line)}
+    .danger{background:#fee2e2;color:#991b1b;border:1px solid #fecaca}
+    .pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:var(--accent-soft);color:#5b21b6;font-weight:900;font-size:13px;margin-right:8px;margin-bottom:8px;border:1px solid #ddd6fe}
+    .pill.gray{background:#f3f4f6;color:#374151;border-color:#e5e7eb}
+    .pill.good{background:#dcfce7;color:#166534;border-color:#bbf7d0}
+    .pill.warn{background:#ffedd5;color:#9a3412;border-color:#fed7aa}
+    .pill.bad{background:#fee2e2;color:#991b1b;border-color:#fecaca}
+    .kpi{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}
+    .kpi .value{font-size:24px;font-weight:950;line-height:1.1}
+    .kpi .label{color:var(--muted);font-size:13px;margin-top:4px}
+    .progress-wrap{margin-top:8px}
+    .progress-label{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;color:var(--muted)}
+    .progress{height:10px;border-radius:999px;background:#eef2f7;overflow:hidden}
+    .progress>span{display:block;height:100%;background:linear-gradient(90deg,#8b5cf6 0%,#6366f1 100%);width:0%;transition:width .3s ease}
+    .table-like{display:grid;gap:8px}
+    .entry{border:1px solid var(--line);border-radius:12px;padding:10px;background:#fff;font-size:13px}
+    .entry-header{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:6px;font-weight:900}
+    .status-good{color:var(--good)} .status-warn{color:var(--warn)} .status-bad{color:var(--bad)}
+    .hidden{display:none}
+    .footer-note{margin-top:18px;color:var(--muted);font-size:13px;text-align:center}
+    .inline{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .checkbox-line{display:flex;align-items:center;gap:8px;margin-top:6px;font-size:14px}
+    .divider{height:1px;background:var(--line);margin:12px 0}
+    .badge-grid{display:flex;gap:8px;flex-wrap:wrap}
+    .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:900;font-size:13px;color:#111827}
+    .badge.locked{opacity:.45} .badge.unlocked{border-color:#c4b5fd;background:#faf5ff}
+    .boss-card{border:1px solid #fecaca;background:#fff1f2;border-radius:14px;padding:12px}
+    .boss-title{font-weight:950;color:#9f1239;display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:6px}
+    .boss-skill{background:#fff;border:1px dashed #fda4af;padding:10px;border-radius:12px;font-size:13px;color:#4b5563}
+    .boss-raid{border:1px solid #e9d5ff;background:#faf5ff;border-radius:14px;padding:12px}
+    .boss-raid h4{margin:0 0 6px;font-size:14px}
+    .boss-raid .sub{color:var(--muted);font-size:12px;margin-bottom:8px}
+    .raid-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:6px}
+    .raid-item{display:flex;gap:8px;align-items:center;font-size:13px}
+    .hp-card{border:1px solid #bae6fd;background:#f0f9ff;border-radius:14px;padding:12px}
+    .hp-card .hp-title{font-weight:950;color:#075985;margin-bottom:6px}
+    .hp-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px solid #bae6fd;background:#fff;font-weight:950;font-size:13px;color:#0c4a6e}
   </style>
 </head>
 <body>
@@ -290,6 +122,23 @@
 
         <div class="divider"></div>
 
+        <h3>Weekly Deliverable（本周主线任务）</h3>
+        <div class="entry">
+          <div class="entry-header">
+            <span id="weeklyDeliverableTitle">未设置</span>
+            <span id="weeklyDeliverableStatus" class="status-warn">未完成</span>
+          </div>
+          <div class="small muted" id="weeklyDeliverableEvidence">证据：暂无</div>
+          <div class="actions" style="margin-top:10px;">
+            <button class="secondary" id="setWeeklyDeliverableBtn">设置本周主线任务</button>
+            <button class="primary" id="completeWeeklyDeliverableBtn">完成并提交证据</button>
+            <button class="secondary" id="resetWeeklyDeliverableBtn">重置本周主线</button>
+          </div>
+          <div class="small muted" style="margin-top:6px;">完成本周主线：+30 XP（每周最多一次）</div>
+        </div>
+
+        <div class="divider"></div>
+
         <h3>本月目标完成度</h3>
         <div class="progress-wrap">
           <div class="progress-label"><span>人生推进任务天数</span><span id="progressTaskLabel">0 / 20</span></div>
@@ -317,7 +166,17 @@
           <div class="kpi"><div class="value" id="kpiScreen">0h</div><div class="label">屏幕逃避</div></div>
           <div class="kpi"><div class="value" id="kpiSleep">0h</div><div class="label">平均睡眠</div></div>
           <div class="kpi"><div class="value" id="kpiEnergy">0</div><div class="label">平均精力评分</div></div>
-          <div class="kpi"><div class="value" id="kpiHighPressure">0%</div><div class="label">高压日执行率</div></div>
+          <div class="kpi"><div class="value" id="kpiHP">0</div><div class="label">平均HP</div></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="hp-card">
+          <div class="hp-title">今日生命值 HP</div>
+          <div class="inline">
+            <span class="hp-chip" id="todayHPChip">HP 100</span>
+            <span class="small muted" id="todayHPExplain">基于睡眠/屏幕/运动/酒精/ tutoring 自动计算</span>
+          </div>
         </div>
 
         <div class="divider"></div>
@@ -329,6 +188,11 @@
 
         <h3>徽章墙</h3>
         <div id="badgeWall" class="badge-grid"></div>
+
+        <div class="divider"></div>
+
+        <h3>Boss Raid（论文副本）</h3>
+        <div id="bossRaidBox" class="table-like"></div>
 
         <div class="divider"></div>
 
@@ -361,6 +225,11 @@
         </div>
 
         <div class="row">
+          <label for="tutoringMinutes">Tutoring（分钟）</label>
+          <input type="number" id="tutoringMinutes" min="0" step="5" placeholder="例如 150（>120 会扣HP）" />
+        </div>
+
+        <div class="row">
           <label for="exerciseMinutes">运动（分钟）</label>
           <input type="number" id="exerciseMinutes" min="0" step="5" placeholder="例如 20" />
         </div>
@@ -388,6 +257,11 @@
         <div class="row">
           <label for="messageHijacks">被消息劫持次数</label>
           <input type="number" id="messageHijacks" min="0" step="1" placeholder="例如 3" />
+        </div>
+
+        <div class="checkbox-line">
+          <input type="checkbox" id="drankAlcohol" />
+          <label for="drankAlcohol">今天喝酒（HP -50）</label>
         </div>
 
         <div class="checkbox-line">
@@ -425,13 +299,15 @@
 
       <div class="card">
         <h2>今日产检提示</h2>
-        <div id="dailyHints" class="table-like">
-          <div class="entry">
-            <div class="entry-header">
-              <span>最低营养配方</span>
-              <span class="status-warn">未检测</span>
-            </div>
-            <div class="small muted">25分钟关键任务 + 15分钟运动 + 记录 + 1个恢复动作 + 消息窗口化</div>
+        <div id="dailyHints" class="table-like"></div>
+
+        <div class="divider"></div>
+
+        <div class="hp-card">
+          <div class="hp-title">今日HP实时计算</div>
+          <div class="inline">
+            <span class="hp-chip" id="dailyHPChip">HP 100</span>
+            <span class="small muted" id="dailyHPBreakdown"></span>
           </div>
         </div>
 
@@ -467,7 +343,7 @@
 
         <div class="row" style="grid-template-columns: 1fr;">
           <label for="weeklyWins">本周完成了什么（证据）</label>
-          <textarea id="weeklyWins" placeholder="例如：5天做了科研最小块，运动4次，交了scoping review给导师"></textarea>
+          <textarea id="weeklyWins" placeholder="例如：完成Results草稿并发导师，运动4次"></textarea>
         </div>
 
         <div class="row" style="grid-template-columns: 1fr;">
@@ -477,12 +353,12 @@
 
         <div class="row" style="grid-template-columns: 1fr;">
           <label for="weeklyWorks">哪些动作真的有效（保留）</label>
-          <textarea id="weeklyWorks" placeholder="例如：起床后先做25分钟科研、关通知、晚间15分钟走路"></textarea>
+          <textarea id="weeklyWorks" placeholder="例如：起床后先做25分钟科研、消息窗口化"></textarea>
         </div>
 
         <div class="row" style="grid-template-columns: 1fr;">
           <label for="weeklyAdjustments">下周只改三件事（医嘱）</label>
-          <textarea id="weeklyAdjustments" placeholder="1. 保留一个动作 2. 删掉一个动作 3. 升级一个动作"></textarea>
+          <textarea id="weeklyAdjustments" placeholder="1保留 2删除 3升级"></textarea>
         </div>
 
         <div class="actions">
@@ -511,12 +387,7 @@
       <h2>十个月发育计划</h2>
       <p class="muted small">每个月都有发育重点、监测指标、达成标准。不要用一天的状态审判整个孕程。</p>
 
-      <div class="actions">
-        <button class="secondary" id="prevMonthBtn">上一月</button>
-        <button class="secondary" id="nextMonthBtn">下一月</button>
-      </div>
-
-      <div id="monthsContainer" class="month-list" style="margin-top:12px;"></div>
+      <div id="monthsContainer" class="table-like" style="margin-top:12px;"></div>
     </div>
   </section>
 
@@ -533,19 +404,9 @@
       <div class="card">
         <h2>数据说明</h2>
         <ul>
-          <li>数据保存在你的浏览器本地（localStorage）</li>
-          <li>换设备或清缓存会丢失数据，建议每月导出一次 JSON</li>
-          <li>以后要云同步可以升级到 Firebase / Supabase</li>
-          <li>先跑起来最重要，别被技术洁癖拖住</li>
-        </ul>
-        <div class="divider"></div>
-        <h3>最小营养配方</h3>
-        <ul>
-          <li>25分钟关键任务</li>
-          <li>15分钟运动</li>
-          <li>记录</li>
-          <li>1个恢复动作</li>
-          <li>消息窗口化</li>
+          <li>数据保存在浏览器本地（localStorage）</li>
+          <li>清缓存/换设备会丢，建议每月导出一次 JSON</li>
+          <li>以后可升级 Firebase / Supabase 云同步</li>
         </ul>
       </div>
     </div>
@@ -555,8 +416,8 @@
 </div>
 
 <script>
-  const STORAGE_KEY = "rebirth10_data_v2";
-  const APP_VERSION = "2.0.0";
+  const STORAGE_KEY = "rebirth10_data_v3";
+  const APP_VERSION = "3.0.0";
 
   const adviceDeck = [
     "收到你的焦虑了。现在先做25分钟。",
@@ -582,384 +443,369 @@
 
   const bossCatalog = [
     {
-      id: "message_hijack",
-      name: "消息劫持怪",
-      trigger: (e) => (Number(e.messageHijacks)||0) >= 4 || (e.fakeEffort?.includes("message_sink")),
-      skill: "反制：设定消息窗口（例如 11:30 / 16:30 / 20:30），科研时手机勿扰；看到消息先写纸条“xx点处理”，别立刻跳过去。"
+      id:"message_hijack",
+      name:"消息劫持怪",
+      trigger:(e)=> (Number(e.messageHijacks)||0)>=4 || (e.fakeEffort?.includes("message_sink")),
+      skill:"反制：设定消息窗口（例如 11:30 / 16:30 / 20:30），科研时手机勿扰；看到消息先写纸条“xx点处理”。"
     },
     {
-      id: "fake_effort_siren",
-      name: "假努力魅魔",
-      trigger: (e) => (e.fakeEffort?.length||0) >= 2,
-      skill: "反制：允许你假努力，但要先交“入场费”——先做25分钟关键任务，然后你再整理/列计划才算合法。"
+      id:"fake_effort_siren",
+      name:"假努力魅魔",
+      trigger:(e)=> (e.fakeEffort?.length||0)>=2,
+      skill:"反制：允许假努力，但要先交“入场费”——先做25分钟关键任务，再允许整理/列计划。"
     },
     {
-      id: "screen_anaesthesia",
-      name: "屏幕麻醉虫",
-      trigger: (e) => (Number(e.screenMinutes)||0) >= 90 && (Number(e.researchMinutes)||0) < 25,
-      skill: "反制：先走5分钟或做10个深蹲，再决定刷不刷；把刷屏改成“计时15分钟结束”。"
+      id:"screen_anaesthesia",
+      name:"屏幕麻醉虫",
+      trigger:(e)=> (Number(e.screenMinutes)||0)>=90 && (Number(e.researchMinutes)||0)<25,
+      skill:"反制：先走5分钟或做10个深蹲，再决定刷不刷；刷就计时15分钟结束。"
     },
     {
-      id: "night_revenge",
-      name: "报复性熬夜龙",
-      trigger: (e) => (Number(e.sleepHours)||0) > 0 && (Number(e.sleepHours)||0) < 6 && (Number(e.screenMinutes)||0) >= 60,
-      skill: "反制：今晚别补债；用“低刺激恢复”收尾（热水澡/拉伸/轻音乐），然后睡。明早抢回25分钟才是真翻盘。"
+      id:"night_revenge",
+      name:"报复性熬夜龙",
+      trigger:(e)=> (Number(e.sleepHours)||0)>0 && (Number(e.sleepHours)||0)<6 && (Number(e.screenMinutes)||0)>=60,
+      skill:"反制：今晚别补债；用低刺激恢复收尾（洗澡/拉伸/轻音乐），明早抢回25分钟才是真翻盘。"
     },
     {
-      id: "high_pressure_beast",
-      name: "高压救火兽",
-      trigger: (e) => !!e.highPressureDay && !(e.didKeyTask || (Number(e.researchMinutes)||0)>=25),
-      skill: "反制：高压日策略：只做最低配。25分钟关键任务 + 15分钟运动/走动，其他都算加分。"
-    },
-    {
-      id: "perfection_guardian",
-      name: "完美主义门神",
-      trigger: (e) => (Number(e.researchMinutes)||0) > 0 && (Number(e.researchMinutes)||0) < 25 && (e.fakeEffort?.includes("info_rabbit") || e.fakeEffort?.includes("plan_spiral")),
-      skill: "反制：把任务切成“丑陋版草稿”。你要交的是一坨能推进的泥，不是艺术品。"
+      id:"high_pressure_beast",
+      name:"高压救火兽",
+      trigger:(e)=> !!e.highPressureDay && !((e.didKeyTask)||((Number(e.researchMinutes)||0)>=25)),
+      skill:"反制：高压日策略：只做最低配。25分钟关键任务 + 15分钟走动/运动，其余都算加分。"
     }
   ];
 
-  const monthPlans = [
-    { month: 1, stage: "着床期", motto: "先着床，不流产。", theme: "新身份先着床，不追求爆发，只追求长期目标不再永远排最后。", focus: "先建立最低标准，夺回一点时间主权。", warnings: ["不要一上来排满日程","不要靠情绪决定做不做","先保最低标准，再谈上限"], metrics: ["科研深度工作分钟","工作/兼职分钟","运动分钟","屏幕逃避分钟","睡眠小时","恢复行为分钟"], goals: ["每周5天完成25分钟人生推进任务","每周4次15到20分钟运动","至少20天做时间记录","建立消息处理窗口"] },
-    { month: 2, stage: "胚芽期", motto: "先长骨架，不拼颜值。", theme: "从我想改变，进入我每天有动作，建立执行骨架。", focus: "识别假努力，先动手再优化。", warnings: ["警惕假努力冒充进展","计划时间封顶15分钟","关键任务先开始再完美"], metrics: ["新增：是否先完成人生推进任务","新增：被消息劫持次数"], goals: ["每周5天完成45分钟关键任务（可拆分）","被消息劫持次数下降","屏幕逃避时间略降","完成一个PhD可见产出"] },
-    { month: 3, stage: "器官形成期", motto: "系统先稳，速度后面会来。", theme: "执行系统开始成形，时间系统、任务系统、恢复系统都开始发育。", focus: "建立周复盘，不靠意志硬撑。", warnings: ["状态好也别加码过猛","不要把运动当惩罚","崩盘日回到最低标准，不补债"], metrics: ["新增：每周关键任务完成率"], goals: ["每周一次周复盘","每周4次运动，至少2次力量","每周5天科研推进记录","消息窗口化开始稳定"] },
-    { month: 4, stage: "稳定孕期", motto: "不是更狠，是更稳。", theme: "从求生模式转向建设模式，能量管理开始见效。", focus: "降低熬夜透支，开始感到能量回升。", warnings: ["别因为觉得自己好了就猛冲","别用熬夜换效率","保留恢复行为"], metrics: ["新增：精力评分","新增：报复性熬夜次数（周统计）"], goals: ["每周科研深度工作4到6小时","每周1次30到45分钟完整训练","报复性熬夜逐步下降","每周记录2个成功优先级案例"] },
-    { month: 5, stage: "胎动期", motto: "有胎动了，继续养，不乱折腾。", theme: "开始明显感到自己在变，焦虑来了也不完全劫持你。", focus: "在焦虑存在时仍完成最小动作。", warnings: ["有进步也别停记录","一两天失控不是退步","别看不起最低标准"], metrics: ["新增：焦虑来时是否完成最小动作","新增：先做科研再回消息的天数"], goals: ["每周5天关键任务最小块","每周4次运动","焦虑日70%仍完成最小动作","PhD第二个可见产出"] },
-    { month: 6, stage: "结构强化期", motto: "专业不是忙，是有取舍。", theme: "专业感从感觉变成行为，优先级、边界、交付质量开始成形。", focus: "区分必须做、可以做、以后做。", warnings: ["警惕全能幻想","不属于你的责任别自动接住","边界训练会不舒服但很值"], metrics: ["新增：每周边界行为次数","新增：每周专业输出次数"], goals: ["每周1个高质量专业输出","每周1次边界行为","运动强度微升级","屏幕逃避时间趋势下降"] },
-    { month: 7, stage: "负重练习期", motto: "压力存在，也能推进。", theme: "在压力真实存在时仍运转，不再等状态好才开始。", focus: "高压日也做最小动作，建立带压运行能力。", warnings: ["旧系统会抢控制权，这是正常的","不要因为回潮就否定自己","继续用收到，但先做25分钟"], metrics: ["新增：高压日是否完成最小动作","新增：高压日屏幕逃避时间"], goals: ["高压日60%仍完成最小块","每周4次运动不断线","每周1次周复盘","形成烦躁也能先做正事的模式"] },
-    { month: 8, stage: "定力成形期", motto: "定力不是硬扛，是顺序稳定。", theme: "你开始像你想成为的人，越来越不容易被消息和情绪带跑。", focus: "稳定第一段时间给长期目标。", warnings: ["别因为进步了就增加太多目标","定力来自重复，不来自灵感"], metrics: ["新增：第一段时间是否给长期目标","新增：本周最重要任务完成情况"], goals: ["每周5天第一段专注时间给长期目标","科研深度工作稳定增长","运动系统变得无需挣扎","减少先回消息再开始自己任务"] },
-    { month: 9, stage: "临产准备期", motto: "先整合，再冲刺。", theme: "把行为整合成身份感，开始看见自己已不是偶尔做到。", focus: "盘点证据，不靠感觉判定自己。", warnings: ["临近年底容易自我审判","不要只盯没做到的","开始做证据清单"], metrics: ["新增：每周身份证据数","新增：情绪恢复质量评分"], goals: ["做9个月变化证据清单","维持科研运动记录三件套","减少无效社交外溢","为年底冲刺做资源配置"] },
-    { month: 10, stage: "分娩期", motto: "平稳分娩，不靠蛮力。", theme: "把新自己顺利生出来，身份落地，不做年末自虐冲刺。", focus: "看趋势和一致性，用稳定收尾。", warnings: ["分娩期最忌焦躁","别搞最后一个月逆天改命戏码","节奏比强度更重要"], metrics: ["看10个月累计科研时间","看10个月累计运动次数","看屏幕趋势、高压日执行率、专业输出数、周复盘率"], goals: ["能用数据证明自己在压力下能推进关键任务","有稳定运动和恢复系统","时间可量化","更专业、更有边界、更有定力"] }
+  // Boss Raid setup
+  const bossRaidDefs = [
+    {
+      id:"scoping",
+      title:"Scoping Review Boss（3/27）",
+      items:[
+        { key:"results", label:"Results完成", dmg:30 },
+        { key:"discussion", label:"Discussion完成", dmg:30 },
+        { key:"send_supervisor", label:"发导师review", dmg:20 },
+        { key:"submitted", label:"投稿完成", dmg:20 }
+      ]
+    },
+    {
+      id:"confirmation",
+      title:"Confirmation Boss（4/30）",
+      items:[
+        { key:"outline", label:"报告结构/目录完成", dmg:20 },
+        { key:"draft_v1", label:"完整draft v1发导师", dmg:30 },
+        { key:"revise", label:"根据反馈大修完成", dmg:30 },
+        { key:"submitted", label:"最终提交完成", dmg:20 }
+      ]
+    },
+    {
+      id:"mind",
+      title:"MiND Boss（5月）",
+      items:[
+        { key:"format", label:"按期刊格式大修完成", dmg:30 },
+        { key:"tables", label:"表图/补充材料完成", dmg:30 },
+        { key:"package", label:"投稿包完成（CL/声明/清单）", dmg:20 },
+        { key:"submitted", label:"投稿完成", dmg:20 }
+      ]
+    },
+    {
+      id:"protocol",
+      title:"Protocol Boss（8月）",
+      items:[
+        { key:"outline", label:"目录+每节要点完成", dmg:20 },
+        { key:"methods", label:"Methods/Measures完成", dmg:30 },
+        { key:"analysis", label:"Analysis/Ethics完成", dmg:30 },
+        { key:"submitted", label:"投稿完成", dmg:20 }
+      ]
+    }
   ];
 
-  // XP + Level title mapping (simple but addictive)
-  function levelTitle(level) {
-    const titles = [
-      "着床者","胚芽构建者","系统成形者","稳定供养者","胎动感知者",
-      "结构强化者","带压运行者","定力成形者","临产整合者","新生体"
-    ];
-    if (level <= 0) return titles[0];
-    if (level >= 10) return titles[9];
-    return titles[level - 1];
+  function levelTitle(level){
+    const titles=["着床者","胚芽构建者","系统成形者","稳定供养者","胎动感知者","结构强化者","带压运行者","定力成形者","临产整合者","新生体"];
+    if(level<=0) return titles[0];
+    if(level>=10) return titles[9];
+    return titles[level-1];
   }
 
-  function defaultData() {
+  function defaultData(){
     return {
-      version: APP_VERSION,
-      createdAt: new Date().toISOString(),
-      startDate: new Date().toISOString().slice(0, 10),
-      identityStatement: "我是一个在压力、内耗和现实责任都存在的情况下，仍然能稳定保护长期目标、持续行动、并照顾身体的人。",
-      dailyEntries: {},
-      weeklyReviews: {},
-      lastAdvice: null,
-      badgesUnlocked: {}
+      version:APP_VERSION,
+      createdAt:new Date().toISOString(),
+      startDate:new Date().toISOString().slice(0,10),
+      identityStatement:"我是一个在压力、内耗和现实责任都存在的情况下，仍然能稳定保护长期目标、持续行动、并照顾身体的人。",
+      dailyEntries:{},
+      weeklyReviews:{},
+      lastAdvice:null,
+      badgesUnlocked:{},
+      weeklyDeliverables:{}, // { weekKey: { title, evidence, done, doneAt, xpGranted } }
+      bossRaid:{}, // { bossId: { itemKey: true/false } }
+      xpExtra:0 // store one-off XP like weekly deliverable bonus
     };
   }
 
-  function loadData() {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return defaultData();
-      const parsed = JSON.parse(raw);
+  function loadData(){
+    try{
+      const raw=localStorage.getItem(STORAGE_KEY);
+      if(!raw) return defaultData();
+      const parsed=JSON.parse(raw);
       return {
         ...defaultData(),
         ...parsed,
-        dailyEntries: parsed.dailyEntries || {},
-        weeklyReviews: parsed.weeklyReviews || {},
-        badgesUnlocked: parsed.badgesUnlocked || {}
+        dailyEntries:parsed.dailyEntries||{},
+        weeklyReviews:parsed.weeklyReviews||{},
+        badgesUnlocked:parsed.badgesUnlocked||{},
+        weeklyDeliverables:parsed.weeklyDeliverables||{},
+        bossRaid:parsed.bossRaid||{},
+        xpExtra:Number(parsed.xpExtra)||0
       };
-    } catch {
+    }catch{
       return defaultData();
     }
   }
 
-  let state = loadData();
-
-  function saveData() {
+  let state=loadData();
+  function saveData(){
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
     renderAll();
   }
 
   // Elements
-  const els = {
-    identityStatement: document.getElementById("identityStatement"),
-    editIdentityBtn: document.getElementById("editIdentityBtn"),
-    exportBtn: document.getElementById("exportBtn"),
-    importBtn: document.getElementById("importBtn"),
-    importFile: document.getElementById("importFile"),
+  const els={
+    identityStatement:document.getElementById("identityStatement"),
+    editIdentityBtn:document.getElementById("editIdentityBtn"),
+    exportBtn:document.getElementById("exportBtn"),
+    importBtn:document.getElementById("importBtn"),
+    importFile:document.getElementById("importFile"),
+    adviceBtn:document.getElementById("adviceBtn"),
+    advicePill:document.getElementById("advicePill"),
+    levelPill:document.getElementById("levelPill"),
+    xpPill:document.getElementById("xpPill"),
+    streakPill:document.getElementById("streakPill"),
 
-    adviceBtn: document.getElementById("adviceBtn"),
-    advicePill: document.getElementById("advicePill"),
-    levelPill: document.getElementById("levelPill"),
-    xpPill: document.getElementById("xpPill"),
-    streakPill: document.getElementById("streakPill"),
+    currentMonthPill:document.getElementById("currentMonthPill"),
+    currentWeekPill:document.getElementById("currentWeekPill"),
+    dayCountPill:document.getElementById("dayCountPill"),
+    currentThemeText:document.getElementById("currentThemeText"),
+    currentMonthWarnings:document.getElementById("currentMonthWarnings"),
 
-    currentMonthPill: document.getElementById("currentMonthPill"),
-    currentWeekPill: document.getElementById("currentWeekPill"),
-    dayCountPill: document.getElementById("dayCountPill"),
-    currentThemeText: document.getElementById("currentThemeText"),
-    currentMonthWarnings: document.getElementById("currentMonthWarnings"),
+    progressTaskLabel:document.getElementById("progressTaskLabel"),
+    progressTaskBar:document.getElementById("progressTaskBar"),
+    progressExerciseLabel:document.getElementById("progressExerciseLabel"),
+    progressExerciseBar:document.getElementById("progressExerciseBar"),
+    progressLogLabel:document.getElementById("progressLogLabel"),
+    progressLogBar:document.getElementById("progressLogBar"),
 
-    progressTaskLabel: document.getElementById("progressTaskLabel"),
-    progressTaskBar: document.getElementById("progressTaskBar"),
-    progressExerciseLabel: document.getElementById("progressExerciseLabel"),
-    progressExerciseBar: document.getElementById("progressExerciseBar"),
-    progressLogLabel: document.getElementById("progressLogLabel"),
-    progressLogBar: document.getElementById("progressLogBar"),
+    weeklyDeliverableTitle:document.getElementById("weeklyDeliverableTitle"),
+    weeklyDeliverableStatus:document.getElementById("weeklyDeliverableStatus"),
+    weeklyDeliverableEvidence:document.getElementById("weeklyDeliverableEvidence"),
+    setWeeklyDeliverableBtn:document.getElementById("setWeeklyDeliverableBtn"),
+    completeWeeklyDeliverableBtn:document.getElementById("completeWeeklyDeliverableBtn"),
+    resetWeeklyDeliverableBtn:document.getElementById("resetWeeklyDeliverableBtn"),
 
-    kpiResearch: document.getElementById("kpiResearch"),
-    kpiExercise: document.getElementById("kpiExercise"),
-    kpiScreen: document.getElementById("kpiScreen"),
-    kpiSleep: document.getElementById("kpiSleep"),
-    kpiEnergy: document.getElementById("kpiEnergy"),
-    kpiHighPressure: document.getElementById("kpiHighPressure"),
-    systemAssessment: document.getElementById("systemAssessment"),
+    kpiResearch:document.getElementById("kpiResearch"),
+    kpiExercise:document.getElementById("kpiExercise"),
+    kpiScreen:document.getElementById("kpiScreen"),
+    kpiSleep:document.getElementById("kpiSleep"),
+    kpiEnergy:document.getElementById("kpiEnergy"),
+    kpiHP:document.getElementById("kpiHP"),
+    systemAssessment:document.getElementById("systemAssessment"),
 
-    badgeWall: document.getElementById("badgeWall"),
-    bossBox: document.getElementById("bossBox"),
+    todayHPChip:document.getElementById("todayHPChip"),
+    todayHPExplain:document.getElementById("todayHPExplain"),
 
-    entryDate: document.getElementById("entryDate"),
-    researchMinutes: document.getElementById("researchMinutes"),
-    workMinutes: document.getElementById("workMinutes"),
-    exerciseMinutes: document.getElementById("exerciseMinutes"),
-    screenMinutes: document.getElementById("screenMinutes"),
-    sleepHours: document.getElementById("sleepHours"),
-    recoveryMinutes: document.getElementById("recoveryMinutes"),
-    energyScore: document.getElementById("energyScore"),
-    messageHijacks: document.getElementById("messageHijacks"),
-    didKeyTask: document.getElementById("didKeyTask"),
-    highPressureDay: document.getElementById("highPressureDay"),
-    didMinActionInAnxiety: document.getElementById("didMinActionInAnxiety"),
-    dailyNote: document.getElementById("dailyNote"),
-    saveEntryBtn: document.getElementById("saveEntryBtn"),
-    loadTodayBtn: document.getElementById("loadTodayBtn"),
-    deleteTodayBtn: document.getElementById("deleteTodayBtn"),
-    dailyHints: document.getElementById("dailyHints"),
+    badgeWall:document.getElementById("badgeWall"),
+    bossRaidBox:document.getElementById("bossRaidBox"),
+    bossBox:document.getElementById("bossBox"),
 
-    dailyBossBox: document.getElementById("dailyBossBox"),
-    fakeEffortList: document.getElementById("fakeEffortList"),
+    entryDate:document.getElementById("entryDate"),
+    researchMinutes:document.getElementById("researchMinutes"),
+    workMinutes:document.getElementById("workMinutes"),
+    tutoringMinutes:document.getElementById("tutoringMinutes"),
+    exerciseMinutes:document.getElementById("exerciseMinutes"),
+    screenMinutes:document.getElementById("screenMinutes"),
+    sleepHours:document.getElementById("sleepHours"),
+    recoveryMinutes:document.getElementById("recoveryMinutes"),
+    energyScore:document.getElementById("energyScore"),
+    messageHijacks:document.getElementById("messageHijacks"),
+    drankAlcohol:document.getElementById("drankAlcohol"),
+    didKeyTask:document.getElementById("didKeyTask"),
+    highPressureDay:document.getElementById("highPressureDay"),
+    didMinActionInAnxiety:document.getElementById("didMinActionInAnxiety"),
+    dailyNote:document.getElementById("dailyNote"),
+    saveEntryBtn:document.getElementById("saveEntryBtn"),
+    loadTodayBtn:document.getElementById("loadTodayBtn"),
+    deleteTodayBtn:document.getElementById("deleteTodayBtn"),
+    dailyHints:document.getElementById("dailyHints"),
+    fakeEffortList:document.getElementById("fakeEffortList"),
+    dailyHPChip:document.getElementById("dailyHPChip"),
+    dailyHPBreakdown:document.getElementById("dailyHPBreakdown"),
+    dailyBossBox:document.getElementById("dailyBossBox"),
 
-    weeklyDate: document.getElementById("weeklyDate"),
-    weeklyWins: document.getElementById("weeklyWins"),
-    weeklyHijacks: document.getElementById("weeklyHijacks"),
-    weeklyWorks: document.getElementById("weeklyWorks"),
-    weeklyAdjustments: document.getElementById("weeklyAdjustments"),
-    saveWeeklyBtn: document.getElementById("saveWeeklyBtn"),
-    loadWeeklyBtn: document.getElementById("loadWeeklyBtn"),
-    weeklySnapshot: document.getElementById("weeklySnapshot"),
-    weeklyHistory: document.getElementById("weeklyHistory"),
+    weeklyDate:document.getElementById("weeklyDate"),
+    weeklyWins:document.getElementById("weeklyWins"),
+    weeklyHijacks:document.getElementById("weeklyHijacks"),
+    weeklyWorks:document.getElementById("weeklyWorks"),
+    weeklyAdjustments:document.getElementById("weeklyAdjustments"),
+    saveWeeklyBtn:document.getElementById("saveWeeklyBtn"),
+    loadWeeklyBtn:document.getElementById("loadWeeklyBtn"),
+    weeklySnapshot:document.getElementById("weeklySnapshot"),
+    weeklyHistory:document.getElementById("weeklyHistory"),
 
-    monthsContainer: document.getElementById("monthsContainer"),
-    prevMonthBtn: document.getElementById("prevMonthBtn"),
-    nextMonthBtn: document.getElementById("nextMonthBtn"),
-
-    historyList: document.getElementById("historyList")
+    monthsContainer:document.getElementById("monthsContainer"),
+    historyList:document.getElementById("historyList")
   };
 
-  let ui = { selectedMonthIndex: 0 };
+  // Minimal month plan list (keep small)
+  const monthPlans = [
+    {month:1,stage:"着床期",motto:"先着床，不流产。",theme:"新身份先着床，不追求爆发，只追求长期目标不再永远排最后。",warnings:["不要一上来排满日程","不要靠情绪决定做不做","先保最低标准，再谈上限"]},
+    {month:2,stage:"胚芽期",motto:"先长骨架，不拼颜值。",theme:"从我想改变，进入我每天有动作，建立执行骨架。",warnings:["警惕假努力冒充进展","计划时间封顶15分钟","关键任务先开始再完美"]},
+    {month:3,stage:"器官形成期",motto:"系统先稳，速度后面会来。",theme:"执行系统开始成形，时间系统、任务系统、恢复系统都开始发育。",warnings:["状态好也别加码过猛","不要把运动当惩罚","崩盘日回到最低标准"]},
+    {month:4,stage:"稳定孕期",motto:"不是更狠，是更稳。",theme:"从求生模式转向建设模式，能量管理开始见效。",warnings:["别因为觉得自己好了就猛冲","别用熬夜换效率","保留恢复行为"]},
+    {month:5,stage:"胎动期",motto:"有胎动了，继续养，不乱折腾。",theme:"开始明显感到自己在变，焦虑来了也不完全劫持你。",warnings:["有进步也别停记录","一两天失控不是退步","别看不起最低标准"]},
+    {month:6,stage:"结构强化期",motto:"专业不是忙，是有取舍。",theme:"专业感从感觉变成行为，优先级、边界、交付质量开始成形。",warnings:["警惕全能幻想","不属于你的责任别自动接住","边界训练会不舒服但很值"]},
+    {month:7,stage:"负重练习期",motto:"压力存在，也能推进。",theme:"在压力真实存在时仍运转，不再等状态好才开始。",warnings:["旧系统会抢控制权正常","不要因为回潮就否定自己","收到，但先做25分钟"]},
+    {month:8,stage:"定力成形期",motto:"定力不是硬扛，是顺序稳定。",theme:"你开始像你想成为的人，越来越不容易被消息和情绪带跑。",warnings:["别因为进步就增加太多目标","定力来自重复，不来自灵感"]},
+    {month:9,stage:"临产准备期",motto:"先整合，再冲刺。",theme:"把行为整合成身份感，开始看见自己已不是偶尔做到。",warnings:["临近年底易自我审判","不要只盯没做到的","开始做证据清单"]},
+    {month:10,stage:"分娩期",motto:"平稳分娩，不靠蛮力。",theme:"把新自己顺利生出来，身份落地。",warnings:["节奏比强度更重要","别搞最后一个月逆天改命","用稳定收尾"]},
+  ];
 
   // Utils
-  function todayStr() { return new Date().toISOString().slice(0, 10); }
-  function toDate(s) { return new Date(s + "T00:00:00"); }
-  function diffDays(a, b) { return Math.floor((b - a) / (24*60*60*1000)); }
-  function clamp(n, min, max) { return Math.max(min, Math.min(max, n)); }
-  function percent(current, target) { if (!target || target<=0) return 0; return clamp((current/target)*100, 0, 100); }
-  function sum(arr, key) { return arr.reduce((acc, x) => acc + (Number(x[key]) || 0), 0); }
-  function avg(arr, key) { return arr.length ? sum(arr, key)/arr.length : 0; }
-  function escapeHtml(str) {
-    return String(str)
-      .replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;")
-      .replaceAll('"',"&quot;").replaceAll("'","&#039;");
+  function todayStr(){return new Date().toISOString().slice(0,10);}
+  function toDate(s){return new Date(s+"T00:00:00");}
+  function diffDays(a,b){return Math.floor((b-a)/(24*60*60*1000));}
+  function clamp(n,min,max){return Math.max(min, Math.min(max,n));}
+  function percent(cur,target){if(!target||target<=0) return 0; return clamp((cur/target)*100,0,100);}
+  function sum(arr,key){return arr.reduce((acc,x)=>acc+(Number(x[key])||0),0);}
+  function avg(arr,key){return arr.length?sum(arr,key)/arr.length:0;}
+  function escapeHtml(str){
+    return String(str).replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
   }
 
-  function getProgramProgressInfo() {
-    const start = toDate(state.startDate);
-    const today = toDate(todayStr());
-    let dayCount = diffDays(start, today) + 1;
-    if (dayCount < 1) dayCount = 1;
-    const approxMonth = Math.min(10, Math.max(1, Math.ceil(dayCount / 30)));
-    const approxWeek = Math.ceil(((dayCount - 1) % 30 + 1) / 7);
-    return { dayCount, approxMonth, approxWeek };
+  function getProgramProgressInfo(){
+    const start=toDate(state.startDate);
+    const today=toDate(todayStr());
+    let dayCount=diffDays(start,today)+1; if(dayCount<1) dayCount=1;
+    const approxMonth=Math.min(10, Math.max(1, Math.ceil(dayCount/30)));
+    const approxWeek=Math.ceil(((dayCount-1)%30+1)/7);
+    return {dayCount, approxMonth, approxWeek};
   }
 
-  function getEntriesArray() {
-    return Object.entries(state.dailyEntries)
-      .map(([date, data]) => ({ date, ...data }))
-      .sort((a, b) => b.date.localeCompare(a.date));
+  function getEntriesArray(){
+    return Object.entries(state.dailyEntries).map(([date,data])=>({date,...data})).sort((a,b)=>b.date.localeCompare(a.date));
   }
-  function getWeeklyReviewsArray() {
-    return Object.entries(state.weeklyReviews)
-      .map(([date, data]) => ({ date, ...data }))
-      .sort((a, b) => b.date.localeCompare(a.date));
-  }
-  function getLastNDates(n) {
-    const out = [];
-    const d = new Date();
-    for (let i=0; i<n; i++) {
-      const t = new Date(d);
-      t.setDate(d.getDate() - i);
-      out.push(t.toISOString().slice(0, 10));
-    }
+
+  function getLastNDates(n){
+    const out=[]; const d=new Date();
+    for(let i=0;i<n;i++){const t=new Date(d); t.setDate(d.getDate()-i); out.push(t.toISOString().slice(0,10));}
     return out.reverse();
   }
 
-  function getMonthDateRangeForCurrentProgramMonth() {
-    const info = getProgramProgressInfo();
-    const start = toDate(state.startDate);
-    const monthStart = new Date(start);
-    monthStart.setDate(start.getDate() + (info.approxMonth - 1) * 30);
-    const monthEnd = new Date(monthStart);
-    monthEnd.setDate(monthStart.getDate() + 29);
-    return { start: monthStart.toISOString().slice(0,10), end: monthEnd.toISOString().slice(0,10) };
-  }
-  function getEntriesInRange(startDate, endDate) {
-    return getEntriesArray().filter(e => e.date >= startDate && e.date <= endDate);
+  // Week key (Monday-start ISO week-like, but simple)
+  function getWeekKey(dateStr){
+    const d = toDate(dateStr);
+    // shift to Monday as start
+    const day = d.getDay(); // 0 Sun ... 6 Sat
+    const diffToMon = (day === 0 ? -6 : 1 - day);
+    const mon = new Date(d);
+    mon.setDate(d.getDate() + diffToMon);
+    return mon.toISOString().slice(0,10); // Monday date as key
   }
 
-  // XP system
-  function calcEntryXP(e) {
-    // Core XP rules — gentle but rewarding
-    const r = Number(e.researchMinutes)||0;
-    const ex = Number(e.exerciseMinutes)||0;
-    const rec = Number(e.recoveryMinutes)||0;
-    const scr = Number(e.screenMinutes)||0;
+  // Daily HP system
+  function calcHP(e){
+    let hp=100;
+    const sleep=Number(e.sleepHours)||0;
+    const screen=Number(e.screenMinutes)||0;
+    const ex=Number(e.exerciseMinutes)||0;
+    const tutoring=Number(e.tutoringMinutes)||0;
+    const drank=!!e.drankAlcohol;
 
-    let xp = 0;
+    let breakdown=[];
+    breakdown.push("基础100");
 
-    // Research blocks
-    if (r >= 25) xp += 10;
-    if (r >= 50) xp += 8;       // second block-ish
-    if (r >= 75) xp += 6;       // third block
-    if (r >= 120) xp += 6;      // stamina bonus
+    if(sleep>0 && sleep<6){ hp-=20; breakdown.push("睡眠<6h -20");}
+    if(sleep>8){ hp+=10; breakdown.push("睡眠>8h +10");}
 
-    // Exercise
-    if (ex >= 15) xp += 8;
-    if (ex >= 30) xp += 7;
-    if (ex >= 45) xp += 5;
+    if(screen>120){ hp-=15; breakdown.push("屏幕>2h -15");}
+    if(ex>15){ hp+=20; breakdown.push("运动>15min +20");}
 
-    // Recovery
-    if (rec >= 10) xp += 5;
-    if (rec >= 30) xp += 4;
+    if(drank){ hp-=50; breakdown.push("喝酒 -50");}
+    if(tutoring>120){ hp-=50; breakdown.push("Tutoring>2h -50");}
 
-    // High-pressure hero bonus
-    if (e.highPressureDay && (e.didKeyTask || r >= 25)) xp += 20;
+    hp = clamp(hp, 0, 130);
+    return {hp, breakdown};
+  }
 
-    // Anxiety bonus
-    if (e.didMinActionInAnxiety) xp += 12;
-
-    // Penalty only if extreme screen and no research (soft)
-    if (scr >= 180 && r < 25) xp = Math.max(0, xp - 6);
-
+  // XP system (baseline) + weekly deliverable bonus tracked in xpExtra
+  function calcEntryXP(e){
+    const r=Number(e.researchMinutes)||0;
+    const ex=Number(e.exerciseMinutes)||0;
+    const rec=Number(e.recoveryMinutes)||0;
+    const scr=Number(e.screenMinutes)||0;
+    let xp=0;
+    if(r>=25) xp+=10;
+    if(r>=50) xp+=8;
+    if(r>=75) xp+=6;
+    if(r>=120) xp+=6;
+    if(ex>=15) xp+=8;
+    if(ex>=30) xp+=7;
+    if(ex>=45) xp+=5;
+    if(rec>=10) xp+=5;
+    if(rec>=30) xp+=4;
+    if(e.highPressureDay && (e.didKeyTask || r>=25)) xp+=20;
+    if(e.didMinActionInAnxiety) xp+=12;
+    if(scr>=180 && r<25) xp=Math.max(0,xp-6);
     return xp;
   }
-
-  function totalXP() {
-    const arr = getEntriesArray();
-    return arr.reduce((acc, e) => acc + calcEntryXP(e), 0);
+  function totalXP(){
+    const arr=getEntriesArray();
+    const base = arr.reduce((acc,e)=>acc+calcEntryXP(e),0);
+    return base + (Number(state.xpExtra)||0);
   }
-
-  function levelFromXP(xp) {
-    // Easy curve: level every 120 xp, capped at 10 for vibe
-    const level = Math.floor(xp / 120) + 1;
-    return clamp(level, 1, 10);
+  function levelFromXP(xp){
+    const level=Math.floor(xp/120)+1;
+    return clamp(level,1,10);
   }
-
-  function computeSoftStreak() {
-    // "不断线"：连续有记录的天数（从今天往回数）
-    const dates = getLastNDates(365); // enough
-    let count = 0;
-    for (let i = dates.length - 1; i >= 0; i--) {
-      const d = dates[i];
-      if (state.dailyEntries[d]) count++;
+  function computeSoftStreak(){
+    const dates=getLastNDates(365);
+    let count=0;
+    for(let i=dates.length-1;i>=0;i--){
+      const d=dates[i];
+      if(state.dailyEntries[d]) count++;
       else break;
     }
     return count;
   }
 
-  // Badges
-  const badgeDefs = [
-    {
-      id: "streak7",
-      name: "不断线学徒",
-      desc: "连续7天有记录",
-      check: () => computeSoftStreak() >= 7
-    },
-    {
-      id: "hp_warrior5",
-      name: "高压战士",
-      desc: "累计5个高压日仍完成最小动作",
-      check: () => getEntriesArray().filter(e => e.highPressureDay && (e.didKeyTask || (Number(e.researchMinutes)||0)>=25)).length >= 5
-    },
-    {
-      id: "research_gt_screen_2w",
-      name: "科研归位",
-      desc: "最近14天科研时间 > 屏幕逃避时间",
-      check: () => {
-        const last = getLastNDates(14).map(d => ({...(state.dailyEntries[d]||{}), date:d})).filter(x => x.researchMinutes!==undefined || x.screenMinutes!==undefined);
-        const r = sum(last, "researchMinutes");
-        const s = sum(last, "screenMinutes");
-        return last.length >= 10 && r > s;
-      }
-    },
-    {
-      id: "exercise4w",
-      name: "肌肉苏醒",
-      desc: "最近7天运动≥4天",
-      check: () => {
-        const last = getLastNDates(7).map(d => ({...(state.dailyEntries[d]||{}), date:d})).filter(x => Object.keys(x).length>1);
-        const exDays = last.filter(e => (Number(e.exerciseMinutes)||0)>0).length;
-        return exDays >= 4;
-      }
-    },
-    {
-      id: "min_action_10",
-      name: "焦虑也能做",
-      desc: "累计10次：焦虑时仍完成最小动作",
-      check: () => getEntriesArray().filter(e => e.didMinActionInAnxiety).length >= 10
-    },
-    {
-      id: "week_review_4",
-      name: "系统调参师",
-      desc: "累计4次周复盘",
-      check: () => getWeeklyReviewsArray().length >= 4
-    }
+  // Badges (keep from v2 basic)
+  const badgeDefs=[
+    {id:"streak7",name:"不断线学徒",desc:"连续7天有记录",check:()=>computeSoftStreak()>=7},
+    {id:"hp_warrior5",name:"高压战士",desc:"累计5个高压日仍完成最小动作",check:()=>getEntriesArray().filter(e=>e.highPressureDay && (e.didKeyTask || (Number(e.researchMinutes)||0)>=25)).length>=5},
+    {id:"exercise4w",name:"肌肉苏醒",desc:"最近7天运动≥4天",check:()=>{
+      const last=getLastNDates(7).map(d=>({...(state.dailyEntries[d]||{}),date:d})).filter(x=>Object.keys(x).length>1);
+      return last.filter(e=>(Number(e.exerciseMinutes)||0)>0).length>=4;
+    }}
   ];
-
-  function unlockBadgesIfAny() {
-    let changed = false;
-    badgeDefs.forEach(b => {
-      if (!state.badgesUnlocked[b.id] && b.check()) {
-        state.badgesUnlocked[b.id] = { unlockedAt: new Date().toISOString() };
-        changed = true;
+  function unlockBadgesIfAny(){
+    let changed=false;
+    badgeDefs.forEach(b=>{
+      if(!state.badgesUnlocked[b.id] && b.check()){
+        state.badgesUnlocked[b.id]={unlockedAt:new Date().toISOString()};
+        changed=true;
       }
     });
-    if (changed) localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    if(changed) localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }
 
-  function renderBadges() {
-    unlockBadgesIfAny();
-    els.badgeWall.innerHTML = badgeDefs.map(b => {
-      const unlocked = !!state.badgesUnlocked[b.id];
-      return `<span class="badge ${unlocked ? "unlocked" : "locked"}" title="${escapeHtml(b.desc)}">
-        ${unlocked ? "🏅" : "🔒"} ${escapeHtml(b.name)}
-      </span>`;
-    }).join("");
-  }
-
-  // Boss detection
-  function detectBossForEntry(e) {
-    if (!e) return null;
-    for (const b of bossCatalog) {
-      try {
-        if (b.trigger(e)) return b;
-      } catch {}
+  // Boss detect (daily)
+  function detectBossForEntry(e){
+    if(!e) return null;
+    for(const b of bossCatalog){
+      try{ if(b.trigger(e)) return b; }catch{}
     }
     return null;
   }
-
-  function renderBossBox(e) {
-    const boss = detectBossForEntry(e);
-    if (!boss) {
+  function renderBossBox(e){
+    const boss=detectBossForEntry(e);
+    if(!boss){
       return `<div class="entry small muted">今天 Boss 没现形（或者你已经打赢了）。继续供养。</div>`;
     }
     return `
@@ -970,141 +816,197 @@
     `;
   }
 
-  // Advice
-  function drawAdvice() {
-    const idx = Math.floor(Math.random() * adviceDeck.length);
-    const text = adviceDeck[idx];
-    state.lastAdvice = { text, drawnAt: new Date().toISOString() };
-    saveData();
-  }
-
-  function renderAdvice() {
-    if (!state.lastAdvice?.text) {
-      els.advicePill.textContent = "今日医嘱：未抽";
-      els.advicePill.className = "pill";
-      return;
-    }
-    els.advicePill.textContent = `今日医嘱：${state.lastAdvice.text}`;
-    els.advicePill.className = "pill good";
-    els.advicePill.title = state.lastAdvice.drawnAt;
-  }
-
-  function renderXPHeader() {
-    const xp = totalXP();
-    const level = levelFromXP(xp);
-    els.levelPill.textContent = `Lv${level} ${levelTitle(level)}`;
-    els.xpPill.textContent = `XP ${xp}`;
-    const streak = computeSoftStreak();
-    els.streakPill.textContent = `不断线 ${streak} 天`;
-    els.streakPill.className = `pill ${streak>=7 ? "good" : "gray"}`;
-  }
-
-  // Daily fake effort UI
-  function renderFakeEffortUI(selectedIds) {
-    const set = new Set(selectedIds || []);
-    els.fakeEffortList.innerHTML = fakeEffortOptions.map(opt => `
+  // Fake effort UI
+  function renderFakeEffortUI(selectedIds){
+    const set=new Set(selectedIds||[]);
+    els.fakeEffortList.innerHTML=fakeEffortOptions.map(opt=>`
       <label class="entry checkbox-line" style="margin:0;">
-        <input type="checkbox" data-fe="${opt.id}" ${set.has(opt.id) ? "checked" : ""} />
+        <input type="checkbox" data-fe="${opt.id}" ${set.has(opt.id)?"checked":""}/>
         <span>${escapeHtml(opt.label)}</span>
       </label>
     `).join("");
-
-    els.fakeEffortList.querySelectorAll('input[type="checkbox"][data-fe]').forEach(cb => {
-      cb.addEventListener("change", () => {
-        renderDailyHintsPreview();
-      });
+    els.fakeEffortList.querySelectorAll('input[type="checkbox"][data-fe]').forEach(cb=>{
+      cb.addEventListener("change", ()=>renderDailyHintsPreview());
     });
   }
-
-  function readFakeEffortFromUI() {
-    const ids = [];
-    els.fakeEffortList.querySelectorAll('input[type="checkbox"][data-fe]').forEach(cb => {
-      if (cb.checked) ids.push(cb.getAttribute("data-fe"));
+  function readFakeEffortFromUI(){
+    const ids=[];
+    els.fakeEffortList.querySelectorAll('input[type="checkbox"][data-fe]').forEach(cb=>{
+      if(cb.checked) ids.push(cb.getAttribute("data-fe"));
     });
     return ids;
   }
 
+  // Advice
+  function drawAdvice(){
+    const idx=Math.floor(Math.random()*adviceDeck.length);
+    const text=adviceDeck[idx];
+    state.lastAdvice={text, drawnAt:new Date().toISOString()};
+    saveData();
+  }
+  function renderAdvice(){
+    if(!state.lastAdvice?.text){
+      els.advicePill.textContent="今日医嘱：未抽";
+      els.advicePill.className="pill";
+      return;
+    }
+    els.advicePill.textContent=`今日医嘱：${state.lastAdvice.text}`;
+    els.advicePill.className="pill good";
+    els.advicePill.title=state.lastAdvice.drawnAt;
+  }
+
+  // Weekly Deliverable module
+  function renderWeeklyDeliverable(){
+    const wk=getWeekKey(todayStr());
+    const item=state.weeklyDeliverables[wk] || null;
+    els.weeklyDeliverableTitle.textContent = item?.title ? item.title : "未设置";
+    els.weeklyDeliverableEvidence.textContent = `证据：${item?.evidence ? item.evidence : "暂无"}`;
+    if(item?.done){
+      els.weeklyDeliverableStatus.textContent="已完成";
+      els.weeklyDeliverableStatus.className="status-good";
+    }else{
+      els.weeklyDeliverableStatus.textContent="未完成";
+      els.weeklyDeliverableStatus.className="status-warn";
+    }
+  }
+
+  // Boss Raid module
+  function getBossRaidState(bossId){
+    if(!state.bossRaid[bossId]) state.bossRaid[bossId]={};
+    return state.bossRaid[bossId];
+  }
+  function bossHP(bossDef){
+    const s=getBossRaidState(bossDef.id);
+    let dmg=0;
+    bossDef.items.forEach(it=>{ if(s[it.key]) dmg+=it.dmg; });
+    const hp=clamp(100-dmg, 0, 100);
+    return {hp, dmg};
+  }
+  function renderBossRaid(){
+    const html = bossRaidDefs.map(def=>{
+      const s=getBossRaidState(def.id);
+      const {hp}=bossHP(def);
+      const killed = hp===0;
+      const barPct = (100-hp);
+      const itemsHtml = def.items.map(it=>`
+        <div class="raid-item">
+          <input type="checkbox" data-raid="${def.id}" data-key="${it.key}" ${s[it.key]?"checked":""}/>
+          <span>${escapeHtml(it.label)}（-${it.dmg}）</span>
+        </div>
+      `).join("");
+
+      return `
+        <div class="boss-raid">
+          <h4>${escapeHtml(def.title)} ${killed ? "✅" : ""}</h4>
+          <div class="sub">血条：${hp}/100（勾选交付物会扣血）</div>
+          <div class="progress"><span style="width:${barPct}%"></span></div>
+          <div class="raid-row">${itemsHtml}</div>
+        </div>
+      `;
+    }).join("");
+
+    els.bossRaidBox.innerHTML = html;
+
+    // bind listeners
+    els.bossRaidBox.querySelectorAll('input[type="checkbox"][data-raid]').forEach(cb=>{
+      cb.addEventListener("change", ()=>{
+        const bossId=cb.getAttribute("data-raid");
+        const key=cb.getAttribute("data-key");
+        const s=getBossRaidState(bossId);
+        s[key]=cb.checked;
+        state.bossRaid[bossId]=s;
+        saveData();
+      });
+    });
+  }
+
   // Daily form
-  function setDailyForm(dateStr) {
-    els.entryDate.value = dateStr;
-    const e = state.dailyEntries[dateStr] || {};
-
-    els.researchMinutes.value = e.researchMinutes ?? "";
-    els.workMinutes.value = e.workMinutes ?? "";
-    els.exerciseMinutes.value = e.exerciseMinutes ?? "";
-    els.screenMinutes.value = e.screenMinutes ?? "";
-    els.sleepHours.value = e.sleepHours ?? "";
-    els.recoveryMinutes.value = e.recoveryMinutes ?? "";
-    els.energyScore.value = e.energyScore ?? "";
-    els.messageHijacks.value = e.messageHijacks ?? "";
-    els.didKeyTask.checked = !!e.didKeyTask;
-    els.highPressureDay.checked = !!e.highPressureDay;
-    els.didMinActionInAnxiety.checked = !!e.didMinActionInAnxiety;
-    els.dailyNote.value = e.dailyNote ?? "";
-
-    renderFakeEffortUI(e.fakeEffort || []);
+  function setDailyForm(dateStr){
+    els.entryDate.value=dateStr;
+    const e=state.dailyEntries[dateStr]||{};
+    els.researchMinutes.value=e.researchMinutes ?? "";
+    els.workMinutes.value=e.workMinutes ?? "";
+    els.tutoringMinutes.value=e.tutoringMinutes ?? "";
+    els.exerciseMinutes.value=e.exerciseMinutes ?? "";
+    els.screenMinutes.value=e.screenMinutes ?? "";
+    els.sleepHours.value=e.sleepHours ?? "";
+    els.recoveryMinutes.value=e.recoveryMinutes ?? "";
+    els.energyScore.value=e.energyScore ?? "";
+    els.messageHijacks.value=e.messageHijacks ?? "";
+    els.drankAlcohol.checked=!!e.drankAlcohol;
+    els.didKeyTask.checked=!!e.didKeyTask;
+    els.highPressureDay.checked=!!e.highPressureDay;
+    els.didMinActionInAnxiety.checked=!!e.didMinActionInAnxiety;
+    els.dailyNote.value=e.dailyNote ?? "";
+    renderFakeEffortUI(e.fakeEffort||[]);
     renderDailyHintsPreview();
   }
 
-  function readDailyForm() {
-    const date = els.entryDate.value || todayStr();
+  function readDailyForm(){
+    const date=els.entryDate.value || todayStr();
     return {
       date,
-      data: {
-        researchMinutes: Number(els.researchMinutes.value) || 0,
-        workMinutes: Number(els.workMinutes.value) || 0,
-        exerciseMinutes: Number(els.exerciseMinutes.value) || 0,
-        screenMinutes: Number(els.screenMinutes.value) || 0,
-        sleepHours: Number(els.sleepHours.value) || 0,
-        recoveryMinutes: Number(els.recoveryMinutes.value) || 0,
-        energyScore: Number(els.energyScore.value) || 0,
-        messageHijacks: Number(els.messageHijacks.value) || 0,
-        didKeyTask: els.didKeyTask.checked,
-        highPressureDay: els.highPressureDay.checked,
-        didMinActionInAnxiety: els.didMinActionInAnxiety.checked,
-        fakeEffort: readFakeEffortFromUI(),
-        dailyNote: els.dailyNote.value.trim(),
-        updatedAt: new Date().toISOString()
+      data:{
+        researchMinutes:Number(els.researchMinutes.value)||0,
+        workMinutes:Number(els.workMinutes.value)||0,
+        tutoringMinutes:Number(els.tutoringMinutes.value)||0,
+        exerciseMinutes:Number(els.exerciseMinutes.value)||0,
+        screenMinutes:Number(els.screenMinutes.value)||0,
+        sleepHours:Number(els.sleepHours.value)||0,
+        recoveryMinutes:Number(els.recoveryMinutes.value)||0,
+        energyScore:Number(els.energyScore.value)||0,
+        messageHijacks:Number(els.messageHijacks.value)||0,
+        drankAlcohol:els.drankAlcohol.checked,
+        didKeyTask:els.didKeyTask.checked,
+        highPressureDay:els.highPressureDay.checked,
+        didMinActionInAnxiety:els.didMinActionInAnxiety.checked,
+        fakeEffort:readFakeEffortFromUI(),
+        dailyNote:els.dailyNote.value.trim(),
+        updatedAt:new Date().toISOString()
       }
     };
   }
 
-  function renderDailyHintsPreview() {
-    const e = {
-      researchMinutes: Number(els.researchMinutes.value) || 0,
-      exerciseMinutes: Number(els.exerciseMinutes.value) || 0,
-      recoveryMinutes: Number(els.recoveryMinutes.value) || 0,
-      screenMinutes: Number(els.screenMinutes.value) || 0,
-      sleepHours: Number(els.sleepHours.value) || 0,
-      energyScore: Number(els.energyScore.value) || 0,
-      messageHijacks: Number(els.messageHijacks.value) || 0,
-      didKeyTask: els.didKeyTask.checked,
-      highPressureDay: els.highPressureDay.checked,
-      didMinActionInAnxiety: els.didMinActionInAnxiety.checked,
-      fakeEffort: readFakeEffortFromUI()
+  function renderDailyHintsPreview(){
+    const e={
+      researchMinutes:Number(els.researchMinutes.value)||0,
+      workMinutes:Number(els.workMinutes.value)||0,
+      tutoringMinutes:Number(els.tutoringMinutes.value)||0,
+      exerciseMinutes:Number(els.exerciseMinutes.value)||0,
+      screenMinutes:Number(els.screenMinutes.value)||0,
+      sleepHours:Number(els.sleepHours.value)||0,
+      recoveryMinutes:Number(els.recoveryMinutes.value)||0,
+      energyScore:Number(els.energyScore.value)||0,
+      messageHijacks:Number(els.messageHijacks.value)||0,
+      drankAlcohol:els.drankAlcohol.checked,
+      didKeyTask:els.didKeyTask.checked,
+      highPressureDay:els.highPressureDay.checked,
+      didMinActionInAnxiety:els.didMinActionInAnxiety.checked,
+      fakeEffort:readFakeEffortFromUI()
     };
 
-    const metMinTask = e.didKeyTask || e.researchMinutes >= 25;
-    const metExercise = e.exerciseMinutes >= 15;
-    const metRecovery = e.recoveryMinutes > 0;
-    const metRecord = true;
+    const metMinTask = e.didKeyTask || e.researchMinutes>=25;
+    const metExercise = e.exerciseMinutes>=15;
+    const metRecovery = e.recoveryMinutes>0;
 
-    const score = [metMinTask, metExercise, metRecovery, metRecord].filter(Boolean).length;
+    const score=[metMinTask,metExercise,metRecovery,true].filter(Boolean).length;
+    let statusClass="status-warn", statusText="进行中";
+    if(score>=4){statusClass="status-good";statusText="保胎完成";}
+    else if(score<=1){statusClass="status-bad";statusText="需要补营养";}
 
-    let statusClass = "status-warn";
-    let statusText = "进行中";
-    if (score >= 4) { statusClass = "status-good"; statusText = "保胎完成"; }
-    else if (score <= 1) { statusClass = "status-bad"; statusText = "需要补营养"; }
-
-    let advice = [];
-    if (!metMinTask) advice.push("先补一个25分钟关键任务");
-    if (!metExercise) advice.push("补15分钟运动版本");
-    if (!metRecovery) advice.push("加一个恢复动作");
-    if (e.screenMinutes > 90) advice.push("屏幕偏高，试试消息窗口化 + 计时刷屏");
-    if ((e.fakeEffort?.length||0) >= 2) advice.push("假努力警报：先交25分钟入场费再允许整理/列计划");
+    let advice=[];
+    if(!metMinTask) advice.push("先补一个25分钟关键任务");
+    if(!metExercise) advice.push("补15分钟运动版本");
+    if(!metRecovery) advice.push("加一个恢复动作");
+    if(e.screenMinutes>90) advice.push("屏幕偏高：消息窗口化 + 计时刷屏");
+    if((e.fakeEffort?.length||0)>=2) advice.push("假努力警报：先交25分钟入场费再整理/列计划");
 
     const xpNow = calcEntryXP(e);
     const bossHtml = renderBossBox(e);
+
+    const {hp, breakdown} = calcHP(e);
+    els.dailyHPChip.textContent = `HP ${hp}`;
+    els.dailyHPBreakdown.textContent = breakdown.join("｜");
 
     els.dailyHints.innerHTML = `
       <div class="entry">
@@ -1113,380 +1015,330 @@
           <span class="${statusClass}">${statusText}</span>
         </div>
         <div class="small muted">
-          关键任务：${metMinTask ? "已达标" : "未达标"} ｜ 
-          运动：${metExercise ? "已达标" : "未达标"} ｜ 
-          恢复：${metRecovery ? "有" : "暂无"} ｜ 
-          记录：已完成输入
+          关键任务：${metMinTask?"已达标":"未达标"} ｜ 运动：${metExercise?"已达标":"未达标"} ｜ 恢复：${metRecovery?"有":"暂无"} ｜ 记录：已完成输入
         </div>
-        <div class="small" style="margin-top:6px;"><strong>今日预估XP：</strong>${xpNow}</div>
-        ${advice.length ? `<div class="small" style="margin-top:6px;">建议：${advice.join("；")}</div>` : `<div class="small" style="margin-top:6px;">很好，今天在稳定供养新自己。</div>`}
+        <div class="small" style="margin-top:6px;"><strong>今日预估XP：</strong>${xpNow}（另有 Weekly Deliverable 可+30）</div>
+        ${advice.length?`<div class="small" style="margin-top:6px;">建议：${advice.join("；")}</div>`:`<div class="small" style="margin-top:6px;">很好，今天在稳定供养新自己。</div>`}
       </div>
     `;
 
     els.dailyBossBox.innerHTML = bossHtml;
-    // Overview boss box uses saved entry; daily uses preview.
   }
 
-  // Weekly
-  function setWeeklyForm(dateStr) {
-    els.weeklyDate.value = dateStr;
-    const r = state.weeklyReviews[dateStr] || {};
-    els.weeklyWins.value = r.weeklyWins || "";
-    els.weeklyHijacks.value = r.weeklyHijacks || "";
-    els.weeklyWorks.value = r.weeklyWorks || "";
-    els.weeklyAdjustments.value = r.weeklyAdjustments || "";
+  // Overview render
+  function renderIdentity(){els.identityStatement.textContent=state.identityStatement;}
+  function renderXPHeader(){
+    const xp=totalXP();
+    const level=levelFromXP(xp);
+    els.levelPill.textContent=`Lv${level} ${levelTitle(level)}`;
+    els.xpPill.textContent=`XP ${xp}`;
+    const streak=computeSoftStreak();
+    els.streakPill.textContent=`不断线 ${streak} 天`;
+    els.streakPill.className=`pill ${streak>=7?"good":"gray"}`;
+  }
+  function renderBadges(){
+    unlockBadgesIfAny();
+    els.badgeWall.innerHTML = badgeDefs.map(b=>{
+      const unlocked=!!state.badgesUnlocked[b.id];
+      return `<span class="badge ${unlocked?"unlocked":"locked"}" title="${escapeHtml(b.desc)}">${unlocked?"🏅":"🔒"} ${escapeHtml(b.name)}</span>`;
+    }).join("");
   }
 
-  function renderWeeklySnapshot() {
-    const last7Dates = getLastNDates(7);
-    const entries = last7Dates.map(d => ({ date: d, ...(state.dailyEntries[d] || {}) }))
-      .filter(e => Object.keys(e).length > 1);
-
-    const researchH = (sum(entries, "researchMinutes") / 60).toFixed(1);
-    const workH = (sum(entries, "workMinutes") / 60).toFixed(1);
-    const screenH = (sum(entries, "screenMinutes") / 60).toFixed(1);
-    const exerciseDays = entries.filter(e => (Number(e.exerciseMinutes) || 0) > 0).length;
-    const keyTaskDays = entries.filter(e => e.didKeyTask || (Number(e.researchMinutes)||0)>=25).length;
-    const avgEnergy = avg(entries.filter(e => e.energyScore), "energyScore");
-    const avgHijacks = avg(entries, "messageHijacks");
-
-    const rows = [
-      ["科研深度工作", `${researchH} 小时`],
-      ["工作/兼职", `${workH} 小时`],
-      ["屏幕逃避", `${screenH} 小时`],
-      ["运动天数", `${exerciseDays} 天`],
-      ["关键任务天数", `${keyTaskDays} 天`],
-      ["平均精力评分", avgEnergy ? avgEnergy.toFixed(1) : "0"],
-      ["平均消息劫持", `${avgHijacks ? avgHijacks.toFixed(1) : "0"} 次/天`]
-    ];
-
-    els.weeklySnapshot.innerHTML = rows.map(([k, v]) => `
+  function renderMonths(){
+    els.monthsContainer.innerHTML = monthPlans.map(m=>`
       <div class="entry">
-        <div class="entry-header"><span>${k}</span><span>${v}</span></div>
+        <div class="entry-header"><span>第${m.month}个月｜${escapeHtml(m.stage)}</span><span class="muted small">${escapeHtml(m.motto)}</span></div>
+        <div class="small">${escapeHtml(m.theme)}</div>
+        <div class="small muted" style="margin-top:6px;"><strong>提醒：</strong>${m.warnings.map(x=>escapeHtml(x)).join("；")}</div>
       </div>
     `).join("");
   }
 
-  function renderWeeklyHistory() {
-    const arr = getWeeklyReviewsArray();
-    if (!arr.length) {
-      els.weeklyHistory.innerHTML = `<div class="entry small muted">还没有周复盘记录</div>`;
-      return;
-    }
-    els.weeklyHistory.innerHTML = arr.slice(0, 8).map(r => `
-      <div class="entry">
-        <div class="entry-header">
-          <span>${r.date}</span>
-          <span class="muted small">周复盘</span>
-        </div>
-        <div class="small"><strong>完成：</strong>${escapeHtml((r.weeklyWins || "").slice(0, 80))}${(r.weeklyWins || "").length > 80 ? "..." : ""}</div>
-        <div class="small"><strong>医嘱：</strong>${escapeHtml((r.weeklyAdjustments || "").slice(0, 80))}${(r.weeklyAdjustments || "").length > 80 ? "..." : ""}</div>
-      </div>
-    `).join("");
-  }
-
-  // Months
-  function renderMonthsList() {
-    const currentMonthNum = getProgramProgressInfo().approxMonth;
-    els.monthsContainer.innerHTML = monthPlans.map((m, idx) => `
-      <div class="month-item ${idx === ui.selectedMonthIndex ? "active" : ""}" data-month-index="${idx}">
-        <div class="month-title">第${m.month}个月｜${m.stage} ${m.month === currentMonthNum ? "（当前）" : ""}</div>
-        <div class="small muted">${m.theme}</div>
-        <div class="small" style="margin-top:8px;"><strong>本月口号：</strong>${m.motto}</div>
-        <div class="small" style="margin-top:6px;"><strong>发育重点：</strong>${m.focus}</div>
-        <div class="small" style="margin-top:8px;"><strong>注意事项</strong></div>
-        <ul class="small">${m.warnings.map(x => `<li>${x}</li>`).join("")}</ul>
-        <div class="small" style="margin-top:8px;"><strong>监测指标</strong></div>
-        <ul class="small">${m.metrics.map(x => `<li>${x}</li>`).join("")}</ul>
-        <div class="small" style="margin-top:8px;"><strong>达成标准</strong></div>
-        <ul class="small">${m.goals.map(x => `<li>${x}</li>`).join("")}</ul>
-      </div>
-    `).join("");
-
-    document.querySelectorAll(".month-item").forEach(el => {
-      el.addEventListener("click", () => {
-        ui.selectedMonthIndex = Number(el.dataset.monthIndex);
-        renderMonthsList();
-      });
+  function renderOverview(){
+    const info=getProgramProgressInfo();
+    const plan=monthPlans[info.approxMonth-1];
+    els.currentMonthPill.textContent=`第${plan.month}个月｜${plan.stage}`;
+    els.currentWeekPill.textContent=`第${info.approxWeek}周`;
+    els.dayCountPill.textContent=`第${info.dayCount}天`;
+    els.currentThemeText.textContent=`${plan.theme} 本月口号：${plan.motto}`;
+    els.currentMonthWarnings.innerHTML="";
+    plan.warnings.forEach(w=>{
+      const li=document.createElement("li"); li.textContent=w; els.currentMonthWarnings.appendChild(li);
     });
+
+    // Month range approximation
+    const start=toDate(state.startDate);
+    const monthStart=new Date(start); monthStart.setDate(start.getDate()+(info.approxMonth-1)*30);
+    const monthEnd=new Date(monthStart); monthEnd.setDate(monthStart.getDate()+29);
+    const s=monthStart.toISOString().slice(0,10), e=monthEnd.toISOString().slice(0,10);
+
+    const entries=getEntriesArray().filter(x=>x.date>=s && x.date<=e);
+    const taskDays=entries.filter(x=>x.didKeyTask || (Number(x.researchMinutes)||0)>=25).length;
+    const exDays=entries.filter(x=>(Number(x.exerciseMinutes)||0)>0).length;
+    const logDays=entries.length;
+
+    const targets={taskDays:20, exDays:16, logDays:20};
+    els.progressTaskLabel.textContent=`${taskDays} / ${targets.taskDays}`;
+    els.progressExerciseLabel.textContent=`${exDays} / ${targets.exDays}`;
+    els.progressLogLabel.textContent=`${logDays} / ${targets.logDays}`;
+    els.progressTaskBar.style.width=`${percent(taskDays,targets.taskDays)}%`;
+    els.progressExerciseBar.style.width=`${percent(exDays,targets.exDays)}%`;
+    els.progressLogBar.style.width=`${percent(logDays,targets.logDays)}%`;
+
+    // 7-day KPIs + HP
+    const last7Dates=getLastNDates(7);
+    const last7=last7Dates.map(d=>({date:d,...(state.dailyEntries[d]||{})})).filter(x=>Object.keys(x).length>1);
+    const researchMin=sum(last7,"researchMinutes");
+    const exerciseDays7=last7.filter(x=>(Number(x.exerciseMinutes)||0)>0).length;
+    const screenMin=sum(last7,"screenMinutes");
+    const sleepAvg=avg(last7.filter(x=>x.sleepHours!==undefined),"sleepHours");
+    const energyAvg=avg(last7.filter(x=>x.energyScore!==undefined),"energyScore");
+
+    // avg HP
+    const hpArr = last7.map(x=>calcHP(x).hp);
+    const hpAvg = hpArr.length ? (hpArr.reduce((a,b)=>a+b,0)/hpArr.length) : 0;
+
+    els.kpiResearch.textContent=`${(researchMin/60).toFixed(1)}h`;
+    els.kpiExercise.textContent=`${exerciseDays7}次`;
+    els.kpiScreen.textContent=`${(screenMin/60).toFixed(1)}h`;
+    els.kpiSleep.textContent=`${sleepAvg?sleepAvg.toFixed(1):0}h`;
+    els.kpiEnergy.textContent=`${energyAvg?energyAvg.toFixed(1):0}`;
+    els.kpiHP.textContent=`${hpAvg?hpAvg.toFixed(0):0}`;
+
+    const todayEntry=state.dailyEntries[todayStr()] || {};
+    const todayHP=calcHP(todayEntry).hp;
+    els.todayHPChip.textContent=`HP ${todayHP}`;
+
+    let notes=[];
+    if(researchMin>=175) notes.push("科研推进有基本盘");
+    else notes.push("科研偏少：优先保住25分钟最小块");
+    if(exerciseDays7>=4) notes.push("运动不断线做得不错");
+    else if(exerciseDays7>0) notes.push("运动在启动中，先追求持续");
+    else notes.push("本周运动为0：从15分钟版本开始");
+    if(screenMin>researchMin) notes.push("屏幕仍高：重点做消息窗口化");
+    else notes.push("科研开始压过屏幕：非常好");
+
+    els.systemAssessment.textContent=`系统判读：${notes.join("；")}。`;
+
+    // Boss daily
+    els.bossBox.innerHTML = state.dailyEntries[todayStr()] ? renderBossBox(state.dailyEntries[todayStr()]) : `<div class="entry small muted">今天还没记录，Boss 还在雾里。</div>`;
   }
 
-  // History
-  function renderHistory() {
-    const arr = getEntriesArray();
-    if (!arr.length) {
-      els.historyList.innerHTML = `<div class="entry small muted">还没有每日记录</div>`;
-      return;
-    }
+  // Weekly snapshot/history minimal
+  function renderWeeklySnapshot(){
+    const last7Dates=getLastNDates(7);
+    const entries=last7Dates.map(d=>({date:d,...(state.dailyEntries[d]||{})})).filter(x=>Object.keys(x).length>1);
+    const researchH=(sum(entries,"researchMinutes")/60).toFixed(1);
+    const tutoringH=(sum(entries,"tutoringMinutes")/60).toFixed(1);
+    const screenH=(sum(entries,"screenMinutes")/60).toFixed(1);
+    const exDays=entries.filter(x=>(Number(x.exerciseMinutes)||0)>0).length;
+    const keyDays=entries.filter(x=>x.didKeyTask || (Number(x.researchMinutes)||0)>=25).length;
+    const hpAvg = entries.length ? (entries.map(x=>calcHP(x).hp).reduce((a,b)=>a+b,0)/entries.length).toFixed(0) : "0";
+    const rows=[
+      ["科研深度工作",`${researchH} 小时`],
+      ["Tutoring",`${tutoringH} 小时`],
+      ["屏幕逃避",`${screenH} 小时`],
+      ["运动天数",`${exDays} 天`],
+      ["关键任务天数",`${keyDays} 天`],
+      ["平均HP",`${hpAvg}`]
+    ];
+    els.weeklySnapshot.innerHTML = rows.map(([k,v])=>`
+      <div class="entry"><div class="entry-header"><span>${k}</span><span>${v}</span></div></div>
+    `).join("");
+  }
+  function getWeeklyReviewsArray(){
+    return Object.entries(state.weeklyReviews).map(([date,data])=>({date,...data})).sort((a,b)=>b.date.localeCompare(a.date));
+  }
+  function renderWeeklyHistory(){
+    const arr=getWeeklyReviewsArray();
+    if(!arr.length){els.weeklyHistory.innerHTML=`<div class="entry small muted">还没有周复盘记录</div>`;return;}
+    els.weeklyHistory.innerHTML=arr.slice(0,8).map(r=>`
+      <div class="entry">
+        <div class="entry-header"><span>${r.date}</span><span class="muted small">周复盘</span></div>
+        <div class="small"><strong>完成：</strong>${escapeHtml((r.weeklyWins||"").slice(0,80))}${(r.weeklyWins||"").length>80?"...":""}</div>
+        <div class="small"><strong>医嘱：</strong>${escapeHtml((r.weeklyAdjustments||"").slice(0,80))}${(r.weeklyAdjustments||"").length>80?"...":""}</div>
+      </div>
+    `).join("");
+  }
 
-    els.historyList.innerHTML = arr.slice(0, 30).map(e => {
-      const minFormula = [
-        (e.didKeyTask || (Number(e.researchMinutes) || 0) >= 25) ? "关键任务" : null,
-        (Number(e.exerciseMinutes) || 0) >= 15 ? "运动" : null,
-        (Number(e.recoveryMinutes) || 0) > 0 ? "恢复" : null
-      ].filter(Boolean);
-
-      const xp = calcEntryXP(e);
-      const boss = detectBossForEntry(e);
-
+  function renderHistory(){
+    const arr=getEntriesArray();
+    if(!arr.length){els.historyList.innerHTML=`<div class="entry small muted">还没有每日记录</div>`;return;}
+    els.historyList.innerHTML=arr.slice(0,30).map(e=>{
+      const xp=calcEntryXP(e);
+      const hp=calcHP(e).hp;
+      const boss=detectBossForEntry(e);
       return `
         <div class="entry">
           <div class="entry-header">
             <span>${e.date}</span>
-            <span class="small muted">${minFormula.length ? "已供养：" + minFormula.join("、") : "波动日"} ｜ XP ${xp}</span>
+            <span class="small muted">XP ${xp} ｜ HP ${hp}</span>
           </div>
           <div class="small">
-            科研 ${(Number(e.researchMinutes) || 0)} 分钟 ｜ 工作 ${(Number(e.workMinutes) || 0)} 分钟 ｜ 运动 ${(Number(e.exerciseMinutes) || 0)} 分钟 ｜ 屏幕 ${(Number(e.screenMinutes) || 0)} 分钟
+            科研 ${(Number(e.researchMinutes)||0)}m ｜ tutoring ${(Number(e.tutoringMinutes)||0)}m ｜ 运动 ${(Number(e.exerciseMinutes)||0)}m ｜ 屏幕 ${(Number(e.screenMinutes)||0)}m
           </div>
-          <div class="small muted" style="margin-top:4px;">
-            睡眠 ${(Number(e.sleepHours) || 0)} 小时 ｜ 精力 ${(Number(e.energyScore) || 0)} ｜ 劫持 ${(Number(e.messageHijacks) || 0)} 次
-          </div>
-          ${boss ? `<div class="small" style="margin-top:6px;"><strong>Boss：</strong>${escapeHtml(boss.name)}</div>` : ""}
-          ${e.dailyNote ? `<div class="small" style="margin-top:6px;"><strong>胎动：</strong>${escapeHtml(e.dailyNote)}</div>` : ""}
+          ${boss?`<div class="small" style="margin-top:6px;"><strong>Boss：</strong>${escapeHtml(boss.name)}</div>`:""}
+          ${e.dailyNote?`<div class="small" style="margin-top:6px;"><strong>胎动：</strong>${escapeHtml(e.dailyNote)}</div>`:""}
         </div>
       `;
     }).join("");
   }
 
-  function renderIdentity() {
-    els.identityStatement.textContent = state.identityStatement;
-  }
-
-  function renderOverview() {
-    const info = getProgramProgressInfo();
-    const plan = monthPlans[info.approxMonth - 1];
-    ui.selectedMonthIndex = info.approxMonth - 1;
-
-    els.currentMonthPill.textContent = `第${plan.month}个月｜${plan.stage}`;
-    els.currentWeekPill.textContent = `第${info.approxWeek}周`;
-    els.dayCountPill.textContent = `第${info.dayCount}天`;
-    els.currentThemeText.textContent = `${plan.theme} 本月口号：${plan.motto}`;
-
-    els.currentMonthWarnings.innerHTML = "";
-    plan.warnings.forEach(w => {
-      const li = document.createElement("li");
-      li.textContent = w;
-      els.currentMonthWarnings.appendChild(li);
-    });
-
-    const range = getMonthDateRangeForCurrentProgramMonth();
-    const monthEntries = getEntriesInRange(range.start, range.end);
-
-    const taskDays = monthEntries.filter(e => e.didKeyTask || (Number(e.researchMinutes)||0)>=25).length;
-    const exerciseDays = monthEntries.filter(e => (Number(e.exerciseMinutes) || 0) > 0).length;
-    const logDays = monthEntries.length;
-
-    const monthTargets = { taskDays: 20, exerciseDays: 16, logDays: 20 };
-    els.progressTaskLabel.textContent = `${taskDays} / ${monthTargets.taskDays}`;
-    els.progressExerciseLabel.textContent = `${exerciseDays} / ${monthTargets.exerciseDays}`;
-    els.progressLogLabel.textContent = `${logDays} / ${monthTargets.logDays}`;
-
-    els.progressTaskBar.style.width = `${percent(taskDays, monthTargets.taskDays)}%`;
-    els.progressExerciseBar.style.width = `${percent(exerciseDays, monthTargets.exerciseDays)}%`;
-    els.progressLogBar.style.width = `${percent(logDays, monthTargets.logDays)}%`;
-
-    // 7-day KPIs
-    const last7Dates = getLastNDates(7);
-    const last7 = last7Dates
-      .map(d => ({ date: d, ...(state.dailyEntries[d] || {}) }))
-      .filter(e => Object.keys(e).length > 1);
-
-    const researchMinutes = sum(last7, "researchMinutes");
-    const exerciseDays7 = last7.filter(e => (Number(e.exerciseMinutes) || 0) > 0).length;
-    const screenMinutes = sum(last7, "screenMinutes");
-    const sleepAvg = avg(last7.filter(e => e.sleepHours !== undefined), "sleepHours");
-    const energyAvg = avg(last7.filter(e => e.energyScore !== undefined), "energyScore");
-
-    const highPressure = last7.filter(e => e.highPressureDay);
-    const highPressureExecuted = highPressure.filter(e => e.didKeyTask || (Number(e.researchMinutes)||0)>=25).length;
-    const highPressureRate = highPressure.length ? (highPressureExecuted / highPressure.length) * 100 : 0;
-
-    els.kpiResearch.textContent = `${(researchMinutes / 60).toFixed(1)}h`;
-    els.kpiExercise.textContent = `${exerciseDays7}次`;
-    els.kpiScreen.textContent = `${(screenMinutes / 60).toFixed(1)}h`;
-    els.kpiSleep.textContent = `${sleepAvg ? sleepAvg.toFixed(1) : 0}h`;
-    els.kpiEnergy.textContent = `${energyAvg ? energyAvg.toFixed(1) : 0}`;
-    els.kpiHighPressure.textContent = `${Math.round(highPressureRate)}%`;
-
-    let notes = [];
-    if (researchMinutes >= 175) notes.push("科研推进有基本盘");
-    else notes.push("科研推进偏少，优先保住25分钟最小块");
-
-    if (exerciseDays7 >= 4) notes.push("运动频率不错，继续稳住");
-    else if (exerciseDays7 > 0) notes.push("运动在启动中，先追求不断线");
-    else notes.push("本周运动为0，先做15分钟版本");
-
-    if (screenMinutes > researchMinutes) notes.push("屏幕逃避仍高于科研，重点做消息窗口化");
-    else notes.push("科研时间开始压过屏幕逃避，这是好信号");
-
-    els.systemAssessment.textContent = `系统判读：${notes.join("；")}。你在做系统发育，不是情绪表演。`;
-
-    // Boss for today (saved entry)
-    const todayEntry = state.dailyEntries[todayStr()];
-    els.bossBox.innerHTML = todayEntry ? renderBossBox(todayEntry) : `<div class="entry small muted">今天还没记录，Boss 还在雾里。去填“今日记录”。</div>`;
-  }
-
-  function renderWeeklyStuff() {
-    renderWeeklySnapshot();
-    renderWeeklyHistory();
-  }
-
-  function renderAll() {
+  function renderAll(){
     renderIdentity();
     renderAdvice();
     renderXPHeader();
     renderBadges();
+    renderWeeklyDeliverable();
+    renderBossRaid();
     renderOverview();
     renderDailyHintsPreview();
-    renderWeeklyStuff();
-    renderMonthsList();
+    renderWeeklySnapshot();
+    renderWeeklyHistory();
+    renderMonths();
     renderHistory();
   }
 
-  function switchTab(tabName) {
-    document.querySelectorAll(".tab-btn").forEach(btn => {
-      btn.classList.toggle("active", btn.dataset.tab === tabName);
-    });
-    document.querySelectorAll(".tab-panel").forEach(panel => panel.classList.add("hidden"));
+  // Tabs
+  function switchTab(tabName){
+    document.querySelectorAll(".tab-btn").forEach(btn=>btn.classList.toggle("active", btn.dataset.tab===tabName));
+    document.querySelectorAll(".tab-panel").forEach(p=>p.classList.add("hidden"));
     document.getElementById(`tab-${tabName}`).classList.remove("hidden");
   }
+  document.querySelectorAll(".tab-btn").forEach(btn=>btn.addEventListener("click",()=>switchTab(btn.dataset.tab)));
 
-  // Events: tabs
-  document.querySelectorAll(".tab-btn").forEach(btn => {
-    btn.addEventListener("click", () => switchTab(btn.dataset.tab));
+  // Header events
+  els.editIdentityBtn.addEventListener("click",()=>{
+    const next=prompt("修改你的身份句子（会显示在首页）", state.identityStatement);
+    if(next && next.trim()){state.identityStatement=next.trim(); saveData();}
+  });
+  els.adviceBtn.addEventListener("click", ()=>drawAdvice());
+
+  // Export/Import
+  els.exportBtn.addEventListener("click",()=>{
+    const blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"});
+    const a=document.createElement("a");
+    a.href=URL.createObjectURL(blob);
+    a.download=`rebirth10-backup-${todayStr()}.json`;
+    a.click(); URL.revokeObjectURL(a.href);
+  });
+  els.importBtn.addEventListener("click",()=>els.importFile.click());
+  els.importFile.addEventListener("change", async (e)=>{
+    const file=e.target.files?.[0]; if(!file) return;
+    try{
+      const text=await file.text();
+      const data=JSON.parse(text);
+      state={...defaultData(),...data,
+        dailyEntries:data.dailyEntries||{},
+        weeklyReviews:data.weeklyReviews||{},
+        badgesUnlocked:data.badgesUnlocked||{},
+        weeklyDeliverables:data.weeklyDeliverables||{},
+        bossRaid:data.bossRaid||{},
+        xpExtra:Number(data.xpExtra)||0
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      renderAll(); setDailyForm(todayStr()); setWeeklyForm(todayStr());
+      alert("导入成功");
+    }catch{ alert("导入失败：无法解析 JSON"); }
+    finally{ e.target.value=""; }
   });
 
-  // Identity edit
-  els.editIdentityBtn.addEventListener("click", () => {
-    const next = prompt("修改你的身份句子（会显示在首页）", state.identityStatement);
-    if (next && next.trim()) {
-      state.identityStatement = next.trim();
+  // Weekly Deliverable buttons
+  els.setWeeklyDeliverableBtn.addEventListener("click", ()=>{
+    const wk=getWeekKey(todayStr());
+    const cur=state.weeklyDeliverables[wk] || {};
+    const title=prompt("设置本周主线任务（只写一个）", cur.title || "");
+    if(!title || !title.trim()) return;
+    state.weeklyDeliverables[wk]={...cur, title:title.trim(), done:!!cur.done, evidence:cur.evidence||"", xpGranted:!!cur.xpGranted};
+    saveData();
+  });
+
+  els.completeWeeklyDeliverableBtn.addEventListener("click", ()=>{
+    const wk=getWeekKey(todayStr());
+    const cur=state.weeklyDeliverables[wk] || {};
+    if(!cur.title){
+      alert("先设置本周主线任务");
+      return;
+    }
+    const evidence=prompt("提交证据（写一句话或粘贴链接）", cur.evidence || "");
+    if(evidence===null) return;
+    const alreadyGranted=!!cur.xpGranted;
+    state.weeklyDeliverables[wk]={...cur, evidence:(evidence||"").trim(), done:true, doneAt:new Date().toISOString(), xpGranted:true};
+    if(!alreadyGranted){
+      state.xpExtra = (Number(state.xpExtra)||0) + 30;
+      saveData();
+      alert("主线推进 +30 XP，胎儿发育稳定。");
+    }else{
+      saveData();
+      alert("已记录证据（本周XP已领取过）");
+    }
+  });
+
+  els.resetWeeklyDeliverableBtn.addEventListener("click", ()=>{
+    const wk=getWeekKey(todayStr());
+    if(confirm("确认重置本周主线任务？（不会回收已加的XP）")){
+      delete state.weeklyDeliverables[wk];
       saveData();
     }
   });
 
-  // Advice
-  els.adviceBtn.addEventListener("click", () => drawAdvice());
-
-  // Export / import
-  els.exportBtn.addEventListener("click", () => {
-    const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(blob);
-    a.download = `rebirth10-backup-${todayStr()}.json`;
-    a.click();
-    URL.revokeObjectURL(a.href);
-  });
-  els.importBtn.addEventListener("click", () => els.importFile.click());
-
-  els.importFile.addEventListener("change", async (e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    try {
-      const text = await file.text();
-      const data = JSON.parse(text);
-      if (!data.dailyEntries || !data.weeklyReviews) {
-        alert("导入失败：文件格式不对");
-        return;
-      }
-      state = {
-        ...defaultData(),
-        ...data,
-        dailyEntries: data.dailyEntries || {},
-        weeklyReviews: data.weeklyReviews || {},
-        badgesUnlocked: data.badgesUnlocked || {}
-      };
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-      renderAll();
-      setDailyForm(todayStr());
-      setWeeklyForm(todayStr());
-      alert("导入成功");
-    } catch {
-      alert("导入失败：无法解析 JSON");
-    } finally {
-      e.target.value = "";
-    }
-  });
-
-  // Daily input listeners (live preview)
+  // Daily inputs live preview
   [
-    els.researchMinutes, els.workMinutes, els.exerciseMinutes, els.screenMinutes,
-    els.sleepHours, els.recoveryMinutes, els.energyScore, els.messageHijacks,
-    els.didKeyTask, els.highPressureDay, els.didMinActionInAnxiety, els.dailyNote
-  ].forEach(el => {
+    els.researchMinutes,els.workMinutes,els.tutoringMinutes,els.exerciseMinutes,els.screenMinutes,
+    els.sleepHours,els.recoveryMinutes,els.energyScore,els.messageHijacks,
+    els.drankAlcohol,els.didKeyTask,els.highPressureDay,els.didMinActionInAnxiety,els.dailyNote
+  ].forEach(el=>{
     el.addEventListener("input", renderDailyHintsPreview);
     el.addEventListener("change", renderDailyHintsPreview);
   });
 
-  els.saveEntryBtn.addEventListener("click", () => {
-    const { date, data } = readDailyForm();
-    state.dailyEntries[date] = data;
-    // If no advice today, auto draw once when saving (nice touch)
-    if (!state.lastAdvice?.text || state.lastAdvice?.drawnAt?.slice(0,10) !== todayStr()) {
-      // don't overwrite if user already drew today
-      if (!state.lastAdvice?.drawnAt || state.lastAdvice.drawnAt.slice(0,10) !== todayStr()) {
-        state.lastAdvice = state.lastAdvice; // keep
-      }
-    }
+  els.saveEntryBtn.addEventListener("click",()=>{
+    const {date,data}=readDailyForm();
+    state.dailyEntries[date]=data;
     saveData();
     alert(`已保存 ${date} 的记录`);
   });
-
-  els.loadTodayBtn.addEventListener("click", () => {
-    const d = els.entryDate.value || todayStr();
+  els.loadTodayBtn.addEventListener("click",()=>{
+    const d=els.entryDate.value||todayStr();
     setDailyForm(d);
   });
-
-  els.deleteTodayBtn.addEventListener("click", () => {
-    const d = els.entryDate.value || todayStr();
-    if (!state.dailyEntries[d]) {
-      alert("这一天没有记录");
-      return;
-    }
-    if (confirm(`确认删除 ${d} 的记录吗？`)) {
-      delete state.dailyEntries[d];
-      saveData();
-      setDailyForm(d);
-    }
+  els.deleteTodayBtn.addEventListener("click",()=>{
+    const d=els.entryDate.value||todayStr();
+    if(!state.dailyEntries[d]){alert("这一天没有记录");return;}
+    if(confirm(`确认删除 ${d} 的记录吗？`)){delete state.dailyEntries[d]; saveData(); setDailyForm(d);}
   });
+  els.entryDate.addEventListener("change",()=>setDailyForm(els.entryDate.value));
 
-  els.entryDate.addEventListener("change", () => setDailyForm(els.entryDate.value));
-
-  // Weekly
-  els.saveWeeklyBtn.addEventListener("click", () => {
-    const d = els.weeklyDate.value || todayStr();
-    state.weeklyReviews[d] = {
-      weeklyWins: els.weeklyWins.value.trim(),
-      weeklyHijacks: els.weeklyHijacks.value.trim(),
-      weeklyWorks: els.weeklyWorks.value.trim(),
-      weeklyAdjustments: els.weeklyAdjustments.value.trim(),
-      updatedAt: new Date().toISOString()
+  // Weekly form
+  function setWeeklyForm(dateStr){
+    els.weeklyDate.value=dateStr;
+    const r=state.weeklyReviews[dateStr]||{};
+    els.weeklyWins.value=r.weeklyWins||"";
+    els.weeklyHijacks.value=r.weeklyHijacks||"";
+    els.weeklyWorks.value=r.weeklyWorks||"";
+    els.weeklyAdjustments.value=r.weeklyAdjustments||"";
+  }
+  els.saveWeeklyBtn.addEventListener("click",()=>{
+    const d=els.weeklyDate.value||todayStr();
+    state.weeklyReviews[d]={
+      weeklyWins:els.weeklyWins.value.trim(),
+      weeklyHijacks:els.weeklyHijacks.value.trim(),
+      weeklyWorks:els.weeklyWorks.value.trim(),
+      weeklyAdjustments:els.weeklyAdjustments.value.trim(),
+      updatedAt:new Date().toISOString()
     };
-    saveData();
-    alert(`已保存 ${d} 的周复盘`);
+    saveData(); alert(`已保存 ${d} 的周复盘`);
   });
-
-  els.loadWeeklyBtn.addEventListener("click", () => {
-    const d = els.weeklyDate.value || todayStr();
+  els.loadWeeklyBtn.addEventListener("click",()=>{
+    const d=els.weeklyDate.value||todayStr();
     setWeeklyForm(d);
   });
-
-  els.weeklyDate.addEventListener("change", () => setWeeklyForm(els.weeklyDate.value));
-
-  // Months nav
-  els.prevMonthBtn.addEventListener("click", () => {
-    ui.selectedMonthIndex = Math.max(0, ui.selectedMonthIndex - 1);
-    renderMonthsList();
-  });
-  els.nextMonthBtn.addEventListener("click", () => {
-    ui.selectedMonthIndex = Math.min(monthPlans.length - 1, ui.selectedMonthIndex + 1);
-    renderMonthsList();
-  });
+  els.weeklyDate.addEventListener("change",()=>setWeeklyForm(els.weeklyDate.value));
 
   // Init
-  if (!state.startDate) state.startDate = todayStr();
-  els.entryDate.value = todayStr();
-  els.weeklyDate.value = todayStr();
+  if(!state.startDate) state.startDate=todayStr();
+  els.entryDate.value=todayStr();
+  els.weeklyDate.value=todayStr();
 
   setDailyForm(todayStr());
   setWeeklyForm(todayStr());
