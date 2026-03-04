@@ -72,6 +72,8 @@
     .hp-card{border:1px solid #bae6fd;background:#f0f9ff;border-radius:14px;padding:12px}
     .hp-card .hp-title{font-weight:950;color:#075985;margin-bottom:6px}
     .hp-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px solid #bae6fd;background:#fff;font-weight:950;font-size:13px;color:#0c4a6e}
+    #pomodoroBox button.secondary { padding: 8px 12px; }
+    #pomodoroBox .pill { user-select: none; }
   </style>
 </head>
 <body>
@@ -191,6 +193,47 @@
 
         <div class="divider"></div>
 
+        <div class="divider"></div>
+
+<h3>番茄钟结界 🍅</h3>
+<div class="entry" id="pomodoroBox">
+  <div class="inline" style="justify-content:space-between; align-items:flex-start;">
+    <div>
+      <div class="entry-header" style="margin-bottom:4px;">
+        <span id="pomoModeLabel">专注</span>
+        <span class="muted small" id="pomoPresetLabel">25+5</span>
+      </div>
+      <div class="small muted" id="pomoHint">专注时手机勿扰；休息时离开屏幕。</div>
+    </div>
+    <span class="pill" id="pomoRoundsPill">轮数 0</span>
+  </div>
+
+  <div class="inline" style="margin-top:10px;">
+    <span class="pill good" id="pomoTimePill" style="font-size:16px;">25:00</span>
+    <span class="pill gray" id="pomoNextPill">下一段：休息 05:00</span>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="inline">
+    <button class="secondary" id="pomoPreset25">25+5</button>
+    <button class="secondary" id="pomoPreset45">45+15</button>
+    <button class="secondary" id="pomoPreset50">50+10</button>
+    <span class="muted small">（点击切换预设）</span>
+  </div>
+
+  <div class="actions">
+    <button class="primary" id="pomoStartPauseBtn">开始</button>
+    <button class="secondary" id="pomoResetBtn">重置</button>
+    <button class="secondary" id="pomoSkipBtn">跳到下一段</button>
+  </div>
+
+  <div class="checkbox-line">
+    <input type="checkbox" id="pomoSound" checked />
+    <label for="pomoSound">切换段落时提示音</label>
+  </div>
+</div>
+        
         <h3>Boss Raid</h3>
         <div id="bossRaidBox" class="table-like"></div>
 
@@ -1334,7 +1377,160 @@
     setWeeklyForm(d);
   });
   els.weeklyDate.addEventListener("change",()=>setWeeklyForm(els.weeklyDate.value));
+// ============ Pomodoro Timer (25+5 / 45+15 / 50+10) ============
+const pomo = {
+  focusSec: 25 * 60,
+  breakSec: 5 * 60,
+  mode: "focus",         // "focus" | "break"
+  remaining: 25 * 60,
+  running: false,
+  rounds: 0,             // 完成的“专注段”数量
+  timerId: null
+};
 
+function fmtTime(sec) {
+  const m = Math.floor(sec / 60);
+  const s = sec % 60;
+  return String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
+}
+
+function setPreset(focusMin, breakMin) {
+  pomo.focusSec = focusMin * 60;
+  pomo.breakSec = breakMin * 60;
+  pomo.mode = "focus";
+  pomo.remaining = pomo.focusSec;
+  pomo.running = false;
+  if (pomo.timerId) clearInterval(pomo.timerId);
+  pomo.timerId = null;
+  updatePomoUI();
+}
+
+function beep() {
+  const soundOn = document.getElementById("pomoSound")?.checked;
+  if (!soundOn) return;
+
+  // Web Audio API 简易beep，避免引入音频文件
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const o = ctx.createOscillator();
+    const g = ctx.createGain();
+    o.type = "sine";
+    o.frequency.value = 880;
+    o.connect(g);
+    g.connect(ctx.destination);
+    g.gain.setValueAtTime(0.0001, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.2, ctx.currentTime + 0.01);
+    o.start();
+    g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.2);
+    o.stop(ctx.currentTime + 0.22);
+    setTimeout(() => ctx.close(), 500);
+  } catch {}
+}
+
+function switchMode() {
+  if (pomo.mode === "focus") {
+    pomo.mode = "break";
+    pomo.remaining = pomo.breakSec;
+    pomo.rounds += 1; // 一个专注段完成 -> 轮数+1
+  } else {
+    pomo.mode = "focus";
+    pomo.remaining = pomo.focusSec;
+  }
+  beep();
+  updatePomoUI();
+}
+
+function tick() {
+  if (!pomo.running) return;
+  pomo.remaining -= 1;
+  if (pomo.remaining <= 0) {
+    switchMode();
+  } else {
+    updatePomoUI();
+  }
+}
+
+function startPause() {
+  pomo.running = !pomo.running;
+  const btn = document.getElementById("pomoStartPauseBtn");
+  if (btn) btn.textContent = pomo.running ? "暂停" : "开始";
+
+  if (pomo.running) {
+    if (!pomo.timerId) {
+      pomo.timerId = setInterval(tick, 1000);
+    }
+  } else {
+    // 不清 interval 也可以，但清掉更干净
+    if (pomo.timerId) clearInterval(pomo.timerId);
+    pomo.timerId = null;
+  }
+  updatePomoUI();
+}
+
+function resetPomo() {
+  pomo.running = false;
+  if (pomo.timerId) clearInterval(pomo.timerId);
+  pomo.timerId = null;
+  pomo.mode = "focus";
+  pomo.remaining = pomo.focusSec;
+  // rounds 不清零也行；我建议重置时清零，符合“重新开始”
+  pomo.rounds = 0;
+
+  const btn = document.getElementById("pomoStartPauseBtn");
+  if (btn) btn.textContent = "开始";
+  updatePomoUI();
+}
+
+function skipSegment() {
+  // 跳到下一段：专注->休息 or 休息->专注
+  switchMode();
+}
+
+function updatePomoUI() {
+  const modeLabel = document.getElementById("pomoModeLabel");
+  const presetLabel = document.getElementById("pomoPresetLabel");
+  const timePill = document.getElementById("pomoTimePill");
+  const nextPill = document.getElementById("pomoNextPill");
+  const roundsPill = document.getElementById("pomoRoundsPill");
+  const hint = document.getElementById("pomoHint");
+
+  const focusMin = Math.round(pomo.focusSec / 60);
+  const breakMin = Math.round(pomo.breakSec / 60);
+  if (presetLabel) presetLabel.textContent = `${focusMin}+${breakMin}`;
+
+  const isFocus = pomo.mode === "focus";
+  if (modeLabel) modeLabel.textContent = isFocus ? "专注" : "休息";
+  if (hint) hint.textContent = isFocus
+    ? "专注：只做一件事（写作/提取/改稿），消息先别回。"
+    : "休息：离开屏幕，走动/拉伸/喝水，给神经系统回血。";
+
+  if (timePill) {
+    timePill.textContent = fmtTime(pomo.remaining);
+    timePill.className = isFocus ? "pill good" : "pill warn";
+  }
+
+  if (nextPill) {
+    const nextText = isFocus
+      ? `下一段：休息 ${fmtTime(pomo.breakSec)}`
+      : `下一段：专注 ${fmtTime(pomo.focusSec)}`;
+    nextPill.textContent = nextText;
+  }
+
+  if (roundsPill) roundsPill.textContent = `轮数 ${pomo.rounds}`;
+}
+
+// Bind events after DOM ready (你已有 init 流程，直接在 init 后调用即可)
+function initPomodoro() {
+  document.getElementById("pomoPreset25")?.addEventListener("click", () => setPreset(25, 5));
+  document.getElementById("pomoPreset45")?.addEventListener("click", () => setPreset(45, 15));
+  document.getElementById("pomoPreset50")?.addEventListener("click", () => setPreset(50, 10));
+
+  document.getElementById("pomoStartPauseBtn")?.addEventListener("click", startPause);
+  document.getElementById("pomoResetBtn")?.addEventListener("click", resetPomo);
+  document.getElementById("pomoSkipBtn")?.addEventListener("click", skipSegment);
+
+  updatePomoUI();
+}
   // Init
   if(!state.startDate) state.startDate=todayStr();
   els.entryDate.value=todayStr();
@@ -1343,6 +1539,7 @@
   setDailyForm(todayStr());
   setWeeklyForm(todayStr());
   renderAll();
+  initPomodoro();
 </script>
 </body>
 </html>
